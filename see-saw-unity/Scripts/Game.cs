@@ -32,7 +32,7 @@ public class Game : MonoBehaviour
             PlayerObject.GetComponent<Player>().OnReset();
             WedgeObject.GetComponent<Wedge>().OnReset();
             BoardObject.GetComponent<Board>().OnReset();
-            PlayerCameraObject.GetComponent<PlayerCamera>().OnReset();
+            PlayerCameraObject.GetComponent<SmoothLookAtFollow>().OnReset();
         }
         else if (Input.GetButtonDown("Drop Weight"))
         {

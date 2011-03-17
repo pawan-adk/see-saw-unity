@@ -9,10 +9,12 @@ public class Wedge : MonoBehaviour
     float m_fCurrMoveDist;
 
     Vector3 m_vParentOffset;
+    Vector3 m_vOrigPos;
+    Quaternion m_vOrigRot;
 
     GameObject BoardObj;    // the see-saw board (to move the hinge)
 
-	void Start () 
+	void Start() 
 	{
         BoardObj = GameObject.Find("Board");
         
@@ -23,9 +25,11 @@ public class Wedge : MonoBehaviour
         m_fCurrMoveDist = 0.0f;
 
         m_vParentOffset = transform.parent.transform.position;
+        m_vOrigRot = rigidbody.rotation;
+        m_vOrigPos = rigidbody.position;
     }
 	
-	void Update () 
+	void Update() 
 	{
         if (!Game.g_bWeightDropped)
         {
@@ -54,12 +58,13 @@ public class Wedge : MonoBehaviour
     {
         m_fCurrMoveDist = 0.0f;
         rigidbody.isKinematic = true;
+        rigidbody.transform.rotation = m_vOrigRot;
+        rigidbody.transform.position = m_vOrigPos;
     }
 
     public void OnLaunchStarted()
     {
         rigidbody.isKinematic = false;
         rigidbody.constraints = RigidbodyConstraints.FreezePositionZ;
-        rigidbody.useGravity = true;
     }
 }

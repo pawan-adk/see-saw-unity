@@ -8,13 +8,21 @@ public class Weight : MonoBehaviour
 
     float m_fCurrMoveDist;
 
+    Vector3 m_vOrigPos;
+    Quaternion m_vOrigRot;
+
     public GameObject BoardObject;
     public GameObject WedgeObject;
     public GameObject PlayerObject;
 
 	void Start ()
     {
+        rigidbody.isKinematic = true;
+
         m_fCurrMoveDist = 0.0f;
+
+        m_vOrigRot = rigidbody.rotation;
+        m_vOrigPos = rigidbody.position;
 	}
 	
 	void Update ()
@@ -37,11 +45,15 @@ public class Weight : MonoBehaviour
     public void OnReset()
     {
         m_fCurrMoveDist = 0.0f;
+
+        rigidbody.isKinematic = true;
+        rigidbody.transform.rotation = m_vOrigRot;
+        rigidbody.transform.position = m_vOrigPos;
     }
 
     public void OnWeightDropped()
     {
-        rigidbody.freezeRotation = false;
+        rigidbody.isKinematic = false;
         rigidbody.constraints = 0;
         rigidbody.constraints = RigidbodyConstraints.FreezePositionZ;
         rigidbody.useGravity = true;

@@ -5,12 +5,17 @@ public class Board : MonoBehaviour
 {
     float m_fHalfBoardLength;
 
+    Vector3 m_vOrigPos;
+    Quaternion m_vOrigRot;
+
     void Start() 
     {
-		rigidbody.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
-		rigidbody.freezeRotation = true;
+        rigidbody.isKinematic = true;
 
         HalfBoardLength = this.collider.bounds.size.x * 0.5f;
+
+        m_vOrigRot = rigidbody.rotation;
+        m_vOrigPos = rigidbody.position;
     }
 	
 	void Update () 
@@ -20,16 +25,16 @@ public class Board : MonoBehaviour
 
     public void OnReset()
     {
-        rigidbody.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
-        rigidbody.freezeRotation = true;
-        rigidbody.useGravity = false;
+        rigidbody.isKinematic = true;
+        rigidbody.transform.rotation = m_vOrigRot;
+        rigidbody.transform.position = m_vOrigPos;
     }
 
     public void OnLaunchStarted()
     {
+        rigidbody.isKinematic = false;
         rigidbody.constraints = 0;
         rigidbody.constraints = RigidbodyConstraints.FreezePositionX;
-        rigidbody.useGravity = true;
     }
 
 

@@ -5,7 +5,6 @@ public class PlayerCamera : MonoBehaviour
 {
     public float MoveCamSpeed = 5.0f;
     public float PosYOffset = 1.0f;
-    public float LookAtYOffset = 1.25f;
     public float MaxZDist = 2.0f;
 
     float m_fCurrZDist;
@@ -20,7 +19,7 @@ public class PlayerCamera : MonoBehaviour
         Vector3 newPos = new Vector3(playerPos.x, playerPos.y + PosYOffset, transform.position.z);
         transform.position = newPos;
 
-        m_vCurrLookAt = new Vector3(playerPos.x, playerPos.y + LookAtYOffset, playerPos.z);
+        m_vCurrLookAt = playerPos;
         transform.LookAt(m_vCurrLookAt);
 
         m_fCurrZDist = 0.0f;
@@ -28,7 +27,6 @@ public class PlayerCamera : MonoBehaviour
 
     void Update()
     {
-
         if (!Game.g_bWeightDropped)
         {
             // "pan"
@@ -54,10 +52,10 @@ public class PlayerCamera : MonoBehaviour
         }
         else
         {
-            Vector3 newLookAt = m_PlayerObject.transform.position;
-            m_vCurrLookAt = new Vector3(newLookAt.x, newLookAt.y + LookAtYOffset, newLookAt.z);
+            m_vCurrLookAt = m_PlayerObject.transform.position;
         }
 
+        m_vCurrLookAt += m_PlayerObject.GetComponent<Player>().MovementForwardScaledByVel();
         Vector3 newPos = new Vector3(m_vCurrLookAt.x, m_vCurrLookAt.y + PosYOffset, transform.position.z);
         transform.position = newPos;
 
@@ -71,6 +69,6 @@ public class PlayerCamera : MonoBehaviour
         Vector3 playerPos = m_PlayerObject.transform.position;
         Vector3 newPos = new Vector3(playerPos.x, playerPos.y + PosYOffset, transform.position.z);
         transform.position = newPos;
-        m_vCurrLookAt = new Vector3(playerPos.x, playerPos.y + LookAtYOffset, playerPos.z);
+        m_vCurrLookAt = playerPos;
     }
 }
