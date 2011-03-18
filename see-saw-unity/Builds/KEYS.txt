@@ -1,0 +1,9 @@
+W - move weight up
+S - move weight down
+A - move wedge left
+D - move wedge right
+
+R - reset
+SPACE - drop weight
+
+click on image in top-left to switch between zoom out view & zoom in

@@ -67,4 +67,5 @@ public class Wedge : MonoBehaviour
         rigidbody.isKinematic = false;
         rigidbody.constraints = RigidbodyConstraints.FreezePositionZ;
     }
+
 }
