@@ -31,7 +31,7 @@ public class Wedge : MonoBehaviour
 	
 	void Update() 
 	{
-        if (!Game.g_bWeightDropped)
+        if (!Game.Instance.WeightDropped && Game.Instance.PreviewDone)
         {
             if (Input.GetButton("Move Wedge Right") && m_fCurrMoveDist < MaxMoveDist)
             {

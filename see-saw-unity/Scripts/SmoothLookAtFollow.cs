@@ -3,9 +3,6 @@ using System.Collections;
 
 public class SmoothLookAtFollow : MonoBehaviour
 {
-    GameObject m_ZoomInOutBtn;
-    Game m_Game;
-
     public Transform LookAtTarget;
 
     Vector3 m_vZoomedInPos;
@@ -29,23 +26,20 @@ public class SmoothLookAtFollow : MonoBehaviour
 
     void LateUpdate()
     {
-        if (Game.g_bWeightDropped)
+        if (Game.Instance.WeightDropped)
         {
             // Look at and dampen the rotation
             Quaternion rotation = Quaternion.LookRotation(LookAtTarget.position - transform.position);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * LookAtDampingPlay);
-            
-            transform.position = Vector3.Lerp(transform.position, new Vector3(LookAtTarget.position.x, transform.position.y, transform.position.z), Time.deltaTime * FollowDamping);
+
+            transform.position = Vector3.Lerp(transform.position, 
+                                            new Vector3(LookAtTarget.position.x,
+                                                        LookAtTarget.position.y, 
+                                                        transform.position.z), 
+                                                Time.deltaTime * FollowDamping);
         }
         else
         {
-            if (Input.GetMouseButtonUp(0))
-                if (m_ZoomInOutBtn.guiTexture.HitTest(Input.mousePosition))
-                {
-                    m_bZoomedIn = !m_bZoomedIn;
-                    m_bResetting = false;
-                }
-
             if (m_bZoomedIn)    // zoomed in or currently zooming in
             {
                 // Look at and dampen the rotation
@@ -63,11 +57,9 @@ public class SmoothLookAtFollow : MonoBehaviour
         }
     }
 
-    void Start()
+    // need to do this later to make sure all objects are initialized first
+    public void LateStart()
     {
-        m_ZoomInOutBtn = GameObject.Find("ZoomInOutButton");
-        m_Game = GameObject.Find("Game").GetComponent<Game>();
-
         // Make the rigid body not change rotation
         if (rigidbody)
             rigidbody.freezeRotation = true;
@@ -79,9 +71,12 @@ public class SmoothLookAtFollow : MonoBehaviour
         m_vZoomedInPos += Vector3.up * ZoomedInYPosOffset;
         m_vZoomedInLA = wedgePos + Vector3.up * ZoomedInYLAOffset;
 
-        // TODO:: do the calculation to have the whole level in view
-        //        or if it's too large, just a certain section..
-        m_vZoomedOutPos = m_Game.GetLevelCenterLookAt() + Vector3.forward * -50.0f;
+        // calculate how far back we need to be to have the see-saw
+        // and the goal in view
+        Level lvl = GameObject.Find("Level").GetComponent<Level>();
+        float zOffset = lvl.GetDistBoardToTrigger() * -0.7759663f;
+
+        m_vZoomedOutPos = lvl.GetLevelCenterLookAt() + Vector3.forward * zOffset;
         m_vZoomedOutPos = new Vector3(m_vZoomedOutPos.x, m_vZoomedInPos.y, m_vZoomedOutPos.z);
 
         // start zoomed in?
@@ -90,6 +85,12 @@ public class SmoothLookAtFollow : MonoBehaviour
         //        then zoom in
         transform.position = m_vZoomedInPos;
         transform.LookAt(m_vZoomedInLA);
+    }
+
+    public void ToggleZoom()
+    {
+        m_bZoomedIn = !m_bZoomedIn;
+        m_bResetting = false;
     }
     
     public void OnReset()

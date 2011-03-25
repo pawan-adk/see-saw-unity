@@ -27,7 +27,7 @@ public class PlayerCamera : MonoBehaviour
 
     void Update()
     {
-        if (!Game.g_bWeightDropped)
+        if (!Game.Instance.WeightDropped)
         {
             // "pan"
 	        if (Input.GetButton("Pan Left"))

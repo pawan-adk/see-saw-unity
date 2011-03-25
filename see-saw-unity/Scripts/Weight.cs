@@ -27,7 +27,7 @@ public class Weight : MonoBehaviour
 	
 	void Update ()
 	{
-		if (!Game.g_bWeightDropped)
+        if (!Game.Instance.WeightDropped && Game.Instance.PreviewDone)
 		{
             if (Input.GetButton("Move Weight Up") && m_fCurrMoveDist < MaxMoveDist)
 			{
@@ -66,7 +66,7 @@ public class Weight : MonoBehaviour
             BoardObject.GetComponent<Board>().OnLaunchStarted();
             WedgeObject.GetComponent<Wedge>().OnLaunchStarted();
             PlayerObject.GetComponent<Player>().OnLaunchStarted();
-            Game.g_bLaunchStarted = true;
+            Game.Instance.LaunchStarted = true;
         }
     }
 }
