@@ -1,0 +1,16 @@
+Direct3D:
+    Version:  Direct3D 9.0c [nvd3dum.dll 8.17.11.9713]
+    Renderer: NVIDIA GeForce 8700M GT
+    Vendor:   NVIDIA
+    VRAM:     512 MB
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 DF24=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
+desktop: 1920x1200 59Hz; virtual: 1920x1200 at 0,0
+<I> Initializing (RawInput).
+<RI> Input initialized.
+Non platform assembly: data-02539D00 (this message is harmless)
+Non platform assembly: data-0259DFE0 (this message is harmless)
+Non platform assembly: data-025A0E58 (this message is harmless)
+Non platform assembly: data-025A5ED0 (this message is harmless)
+
+Unloading 0 unused Assets to reduce memory usage. Loaded Objects now: 164.
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
