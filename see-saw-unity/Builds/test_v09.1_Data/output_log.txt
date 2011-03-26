@@ -7,10 +7,10 @@ Direct3D:
 desktop: 1920x1200 59Hz; virtual: 1920x1200 at 0,0
 <I> Initializing (RawInput).
 <RI> Input initialized.
-Non platform assembly: data-025BCA00 (this message is harmless)
-Non platform assembly: data-02620A88 (this message is harmless)
-Non platform assembly: data-02623900 (this message is harmless)
-Non platform assembly: data-02629D78 (this message is harmless)
+Non platform assembly: data-0272C9E0 (this message is harmless)
+Non platform assembly: data-02791A08 (this message is harmless)
+Non platform assembly: data-027947C0 (this message is harmless)
+Non platform assembly: data-0279AB78 (this message is harmless)
 Game instance created (CTOR)
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)
@@ -46,6 +46,29 @@ Trampoline_OneWay:OnTriggerExit(Collider)
  
 (Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
 
+Resetting Level
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_Reset()
+Level:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Resetting Level
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_Reset()
+Level:LateUpdate()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+No Longer colliding with tramp
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Trampoline_OneWay:OnTriggerExit(Collider)
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
 No Longer colliding with tramp
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)
@@ -56,6 +79,55 @@ Trampoline_OneWay:OnTriggerExit(Collider)
 
 Unloading 44 unused Assets to reduce memory usage. Loaded Objects now: 132.
 Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+Loading next level
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Game:NextLevel()
+VictoryMenu:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+
+Unloading 0 unused Assets to reduce memory usage. Loaded Objects now: 195.
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+Init Common Objs
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_InitCommonObjects()
+Level:Start()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+
+Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 133.
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+StartGame called, Level:1
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Game:StartGame(Int32, Int32)
+MainMenu:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+
+Unloading 0 unused Assets to reduce memory usage. Loaded Objects now: 391.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+Init Common Objs
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_InitCommonObjects()
+Level:Start()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Resetting Level
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_Reset()
+Level:LateUpdate()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
 Resetting Level
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)
@@ -72,6 +144,54 @@ NullReferenceException
  
 (Filename:  Line: -1)
 
+No Longer colliding with tramp
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Trampoline_OneWay:OnTriggerExit(Collider)
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Resetting Level
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_Reset()
+Level:LateUpdate()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Resetting Level
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_Reset()
+Level:LateUpdate()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+NullReferenceException
+  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponent (System.Type)
+  at UnityEngine.GameObject.GetComponent[Weight] () [0x00000] in <filename unknown>:0 
+  at Level._Reset () [0x00000] in <filename unknown>:0 
+  at Level.LateUpdate () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+No Longer colliding with tramp
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Trampoline_OneWay:OnTriggerExit(Collider)
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+No Longer colliding with tramp
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Trampoline_OneWay:OnTriggerExit(Collider)
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+
+Unloading 44 unused Assets to reduce memory usage. Loaded Objects now: 132.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 Loading next level
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)
@@ -166,22 +286,6 @@ NullReferenceException
 
 Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 133.
 Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
-Resetting Level
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-Level:_Reset()
-Level:LateUpdate()
- 
-(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponent (System.Type)
-  at UnityEngine.GameObject.GetComponent[Weight] () [0x00000] in <filename unknown>:0 
-  at Level._Reset () [0x00000] in <filename unknown>:0 
-  at Level.LateUpdate () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
 StartGame called, Level:1
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)
@@ -201,134 +305,6 @@ Level:Start()
  
 (Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
 
-Resetting Level
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-Level:_Reset()
-Level:Update()
- 
-(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
-
-Resetting Level
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-Level:_Reset()
-Level:LateUpdate()
- 
-(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
-
-Resetting Level
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-Level:_Reset()
-Level:LateUpdate()
- 
-(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponent (System.Type)
-  at UnityEngine.GameObject.GetComponent[Weight] () [0x00000] in <filename unknown>:0 
-  at Level._Reset () [0x00000] in <filename unknown>:0 
-  at Level.LateUpdate () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-Resetting Level
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-Level:_Reset()
-Level:LateUpdate()
- 
-(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
-
-Resetting Level
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-Level:_Reset()
-Level:LateUpdate()
- 
-(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponent (System.Type)
-  at UnityEngine.GameObject.GetComponent[Weight] () [0x00000] in <filename unknown>:0 
-  at Level._Reset () [0x00000] in <filename unknown>:0 
-  at Level.LateUpdate () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-Resetting Level
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-Level:_Reset()
-Level:LateUpdate()
- 
-(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
-
-Resetting Level
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-Level:_Reset()
-Level:LateUpdate()
- 
-(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponent (System.Type)
-  at UnityEngine.GameObject.GetComponent[Weight] () [0x00000] in <filename unknown>:0 
-  at Level._Reset () [0x00000] in <filename unknown>:0 
-  at Level.LateUpdate () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-Resetting Level
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-Level:_Reset()
-Level:LateUpdate()
- 
-(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
-
-Resetting Level
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-Level:_Reset()
-Level:LateUpdate()
- 
-(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponent (System.Type)
-  at UnityEngine.GameObject.GetComponent[Weight] () [0x00000] in <filename unknown>:0 
-  at Level._Reset () [0x00000] in <filename unknown>:0 
-  at Level.LateUpdate () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-Resetting Level
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-Level:_Reset()
-Level:LateUpdate()
- 
-(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
-
-Resetting Level
-UnityEngine.Debug:Internal_Log(Int32, String, Object)
-UnityEngine.Debug:Log(Object)
-Level:_Reset()
-Level:LateUpdate()
- 
-(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.GameObject:GetComponent (System.Type)
-  at UnityEngine.GameObject.GetComponent[Weight] () [0x00000] in <filename unknown>:0 
-  at Level._Reset () [0x00000] in <filename unknown>:0 
-  at Level.LateUpdate () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
 No Longer colliding with tramp
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)
@@ -346,3 +322,25 @@ Trampoline_OneWay:OnTriggerExit(Collider)
 
 Unloading 44 unused Assets to reduce memory usage. Loaded Objects now: 132.
 Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+Loading next level
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Game:NextLevel()
+VictoryMenu:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+
+Unloading 0 unused Assets to reduce memory usage. Loaded Objects now: 195.
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+Init Common Objs
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_InitCommonObjects()
+Level:Start()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+
+Unloading 19 unused Assets to reduce memory usage. Loaded Objects now: 133.
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
