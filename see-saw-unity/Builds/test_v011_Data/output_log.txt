@@ -7,10 +7,10 @@ Direct3D:
 desktop: 1920x1200 59Hz; virtual: 1920x1200 at 0,0
 <I> Initializing (RawInput).
 <RI> Input initialized.
-Non platform assembly: data-0255CA00 (this message is harmless)
-Non platform assembly: data-025C0A88 (this message is harmless)
-Non platform assembly: data-025C3900 (this message is harmless)
-Non platform assembly: data-025CA578 (this message is harmless)
+Non platform assembly: data-02569B00 (this message is harmless)
+Non platform assembly: data-025CDDE0 (this message is harmless)
+Non platform assembly: data-025D0C58 (this message is harmless)
+Non platform assembly: data-025D78D0 (this message is harmless)
 Game instance created (CTOR)
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)
@@ -39,7 +39,15 @@ Level:Start()
  
 (Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
 
-Resetting Level, new pos:(-292.5, 2.6, 0.2)
+Resetting Level
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_Reset()
+Level:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Resetting Level, new pos:(-295.7, 2.6, 0.2)
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)
 Level:_ResetToNewPosition()
