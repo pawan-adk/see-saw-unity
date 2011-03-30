@@ -5,6 +5,7 @@ public class Weight : MonoBehaviour
 {
     public float MoveSpeed = 3.0f;
     public float MaxMoveDist = 1.35f;
+    public float StartXOffset;  // offset from center of board on the x axis
 
     float m_fCurrMoveDist;
 
@@ -50,7 +51,16 @@ public class Weight : MonoBehaviour
         rigidbody.transform.rotation = m_vOrigRot;
         rigidbody.transform.position = m_vOrigPos;
     }
+    public void OnResetToNewPosition(Vector3 _pos)
+    {
+        m_vOrigPos.x = _pos.x + StartXOffset;
 
+        m_fCurrMoveDist = 0.0f;
+
+        rigidbody.isKinematic = true;
+        rigidbody.transform.rotation = m_vOrigRot;
+        rigidbody.transform.position = m_vOrigPos;
+    }
     public void OnWeightDropped()
     {
         rigidbody.isKinematic = false;

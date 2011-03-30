@@ -18,6 +18,7 @@ public class Spikes : MonoBehaviour
     {
         if (_info.gameObject.name == "Player")
         {
+            GameObject.Find("Player").GetComponent<Player>().OnHitSpikes();
             Game.Instance.OnCharacterDied();
         }
     }

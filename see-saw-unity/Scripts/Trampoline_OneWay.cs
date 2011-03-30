@@ -7,12 +7,18 @@ public class Trampoline_OneWay : MonoBehaviour
     Player m_Player;
     Vector3 m_vForce;
 
-    // the maximum amount of time that the tramp
-    // applies force to the player
+    // this establishes a maximum end force (after collision and the rebound is being calculated)
+    // where anything below it will result in the player not bouncing back at all
     public float RestingThresholdForce = 400.0f;
+    // each collision with the pad reduces speed slightly, lower values reduce more
     public float Friction = 0.85f;
+    // how "strong" the bounce pad is, directly influencing how fast the player
+    // is bounced away from the pad
     public float TensionConstant = 90.0f;
-    public float MaximumForce = 1350.0f;
+    // to keep the bounce animation in sync with the velocity of the player
+    // a cap is set for the amount of player velocity that can increase the anim speed
+    public float MaxAnimInfluenceOfVelocity = 1350.0f;   
+    // low/high are the values to lerp between, the delta being the sum of velocities / MaxAnimInfluenceOfVelocity
     public float LowAnimMultiplier = 0.75f, HighAnimMultiplier = 1.75f;
 
     bool m_bPlayerInTrigger = false;
@@ -47,7 +53,7 @@ public class Trampoline_OneWay : MonoBehaviour
         if (Mathf.Abs(velX) > 0.0f || Mathf.Abs(velY) > 0.0f)
         {
 	        // TODO:: maybe play at a speed corresponding to the player's velocity??
-	        m_BounceAnim["Take 001"].speed = Mathf.Lerp(LowAnimMultiplier, HighAnimMultiplier, (velX + velY) / MaximumForce);
+	        m_BounceAnim["Take 001"].speed = Mathf.Lerp(LowAnimMultiplier, HighAnimMultiplier, (velX + velY) / MaxAnimInfluenceOfVelocity);
 //             Debug.Log("Anim Speed:" + m_BounceAnim["Take 001"].speed.ToString());
 	        m_BounceAnim.Play();
         }

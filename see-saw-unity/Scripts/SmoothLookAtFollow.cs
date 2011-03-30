@@ -19,6 +19,7 @@ public class SmoothLookAtFollow : MonoBehaviour
     public float ZoomedInYLAOffset = 10.0f;
 
     public float ZoomedOutYPosOffset = 15.0f;
+    public float ZoomedOutZDistMultiplier = -0.7759663f;
     //public float ZoomedOutYLAOffset = 10.0f;
 
     bool m_bZoomedIn = true;
@@ -65,26 +66,31 @@ public class SmoothLookAtFollow : MonoBehaviour
             rigidbody.freezeRotation = true;
 
         // setup the 2 modes' transforms:
+        SetNewZoomedInVars();
+        SetNewZoomedOutVars();
+
+        // start zoomed in?
+        transform.position = m_vZoomedInPos;
+        transform.LookAt(m_vZoomedInLA);
+    }
+
+    public void SetNewZoomedInVars()
+    {
         Vector3 wedgePos = GameObject.Find("Wedge").GetComponent<Wedge>().transform.position;
         m_vZoomedInPos = wedgePos;
         m_vZoomedInPos += Vector3.forward * -ZoomedInZPosOffset;
         m_vZoomedInPos += Vector3.up * ZoomedInYPosOffset;
         m_vZoomedInLA = wedgePos + Vector3.up * ZoomedInYLAOffset;
-
+    }
+    public void SetNewZoomedOutVars()
+    {
         // calculate how far back we need to be to have the see-saw
         // and the goal in view
         Level lvl = GameObject.Find("Level").GetComponent<Level>();
-        float zOffset = lvl.GetDistBoardToTrigger() * -0.7759663f;
+        float zOffset = lvl.GetDistBoardToTrigger() * ZoomedOutZDistMultiplier;
 
-        m_vZoomedOutPos = lvl.GetLevelCenterLookAt() + Vector3.forward * zOffset;
+        m_vZoomedOutPos = lvl.GetLevelCenterPt() + Vector3.forward * zOffset;
         m_vZoomedOutPos = new Vector3(m_vZoomedOutPos.x, m_vZoomedInPos.y, m_vZoomedOutPos.z);
-
-        // start zoomed in?
-        // TODO:: probably set up a start for each level
-        //        to be zoomed out at first, wait a bit, 
-        //        then zoom in
-        transform.position = m_vZoomedInPos;
-        transform.LookAt(m_vZoomedInLA);
     }
 
     public void ToggleZoom()
@@ -95,11 +101,7 @@ public class SmoothLookAtFollow : MonoBehaviour
     
     public void OnReset()
     {
-        // TODO:: smooth interp to final position and look at on reset:
         m_bResetting = true;
         m_bZoomedIn = true;
-//         Vector3 wedgePos = GameObject.Find("Wedge").GetComponent<Wedge>().transform.position;
-//         transform.position = m_vZoomedInPos;
-//        transform.LookAt(wedgePos + Vector3.up * ZoomedInYLAOffset);
     }
 }

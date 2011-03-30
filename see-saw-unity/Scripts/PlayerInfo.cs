@@ -4,21 +4,17 @@ using System.Collections;
 public class PlayerInfo : MonoBehaviour
 {
     int m_nLives;
-    int m_nHealth;
 
-    // defaults occur when all lives are exhausted
+    // defaults are used when all lives are exhausted
     // and no more than defaults have been obtained
-    public const int g_nDefaultHealth = 3;
     public const int g_nDefaultLives = 3;
 
-    int m_nMaxHealth;
     int m_nMaxLives;
 
     void Start()
     {
         DontDestroyOnLoad(this);
 
-        m_nMaxHealth = 3;
         m_nMaxLives = 99;
     }
 
@@ -27,10 +23,9 @@ public class PlayerInfo : MonoBehaviour
 
     }
 
-    public void Init(int _lives, int _health)
+    public void Init(int _lives)
     {
         m_nLives = _lives;
-        m_nHealth = _health;
     }
 
     // return false if game over
@@ -42,7 +37,6 @@ public class PlayerInfo : MonoBehaviour
 
     public void RevertToDefaults()
     {
-        m_nHealth = g_nDefaultHealth;
         m_nLives = g_nDefaultLives;
     }
 
@@ -51,10 +45,5 @@ public class PlayerInfo : MonoBehaviour
     {
         get { return m_nLives; }
         set { m_nLives = value; }
-    }
-    public int Health
-    {
-        get { return m_nHealth; }
-        set { m_nHealth = value; }
     }
 }

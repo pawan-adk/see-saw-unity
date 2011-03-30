@@ -23,6 +23,7 @@ public class Game
 
     public Game()
     {
+        Debug.Log("Game instance created (CTOR)");
         if (instance != null)
             return;
         instance = this;
@@ -44,28 +45,29 @@ public class Game
 
     public void NextLevel()
     {
-        Debug.Log("Loading next level");
 
         // TODO:: increment g_nCurrLevel/g_nCurrWorld first:
         if (++m_nCurrLevel <= m_nNumActualLevelsInWorld)
         {
+            Debug.Log("Loading next level:" + m_nCurrLevel.ToString());
             Application.LoadLevel(m_nCurrLevel);
         }
         else
         {
             // TODO:: goto next world / end
-            Application.LoadLevel("MainMenu");
+            OnGotoMainMenu();
         }
     }
     public void RedoCurrLevel()
     {
         Debug.Log("RedoCurrLevel:" + m_nCurrLevel.ToString());
+        m_PlayerInfo.RevertToDefaults();
         Application.LoadLevel(m_nCurrLevel);
     }
 
     public void StartGame(int _level, int _world)
     {
-        Debug.Log("StartGame called");
+        Debug.Log("StartGame called, Level:" + _level.ToString());
         m_nCurrLevel = _level;
         m_nCurrWorld = _world;
         Application.LoadLevel(m_nCurrLevel);
@@ -98,7 +100,7 @@ public class Game
         if (m_PlayerInfo.OnDeath())
         {
             // more lives left, reset level
-            m_CurrLevel.ResetLevel();
+            m_CurrLevel.ResetLevel(false, false);
         }
         else
         {
@@ -111,6 +113,12 @@ public class Game
         Application.LoadLevel("MainMenu");
     }
 
+    // returns where the player needs to be in relation to the see-saw
+    public Vector3 GetPlayerPlacing()
+    {
+        return CurrLevel.GetPlayerPlacement();
+    }
+
     /// <summary>
     /// ACCESSORS/MUTATORS
     /// </summary>
@@ -118,6 +126,11 @@ public class Game
     {
         get { return m_CurrLevel; }
         set { m_CurrLevel = value; }
+    }
+    public int NumActualLevelsInWorld
+    {
+        get { return m_nNumActualLevelsInWorld; }
+        set { m_nNumActualLevelsInWorld = value; }
     }
     public int CurrWorldNum
     {

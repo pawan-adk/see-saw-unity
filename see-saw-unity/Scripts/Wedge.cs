@@ -14,7 +14,8 @@ public class Wedge : MonoBehaviour
 
     GameObject BoardObj;    // the see-saw board (to move the hinge)
 
-	void Start() 
+    
+    void Start() 
 	{
         BoardObj = GameObject.Find("Board");
         
@@ -61,7 +62,17 @@ public class Wedge : MonoBehaviour
         rigidbody.transform.rotation = m_vOrigRot;
         rigidbody.transform.position = m_vOrigPos;
     }
+    public void OnResetToNewPosition(Vector3 _pos)
+    {
+        m_vOrigPos.x = _pos.x;
 
+        m_fCurrMoveDist = 0.0f;
+        rigidbody.isKinematic = true;
+        rigidbody.transform.rotation = m_vOrigRot;
+        rigidbody.transform.position = m_vOrigPos;
+
+        m_vParentOffset = transform.parent.transform.position;
+    }
     public void OnLaunchStarted()
     {
         rigidbody.isKinematic = false;
