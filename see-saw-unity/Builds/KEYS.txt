@@ -3,6 +3,10 @@ S - move weight down
 A - move wedge left
 D - move wedge right
 
+J - grab onto rope (hold...let go to let go of rope)
+
+Z - toggle between zoom in/out
+
 R - reset
 SPACE - drop weight
 
