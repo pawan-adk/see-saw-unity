@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
 
     GameObject m_Hand;
 
+
     void Start()
     {
         m_Hand = GameObject.Find("TestHand");
@@ -40,15 +41,17 @@ public class Player : MonoBehaviour
 
         if (Game.Instance.LaunchStarted)
         {
-	        if (Input.GetButton("Character Control Up"))
-	        {
-	            rigidbody.AddForce(m_vDefaultForceCharControl.x * 0.0f, m_vDefaultForceCharControl.y, 0.0f);
-	        }
-	        else if (Input.GetButton("Character Control Down"))
-	        {
-	            rigidbody.AddForce(m_vDefaultForceCharControl.x * 0.0f, -m_vDefaultForceCharControl.y, 0.0f);
-	        }
-	        else if (Input.GetButton("Character Control Right"))
+// 	        if (Input.GetButton("Character Control Up"))
+// 	        {
+// 	            rigidbody.AddForce(m_vDefaultForceCharControl.x * 0.0f, m_vDefaultForceCharControl.y, 0.0f);
+// 	        }
+// 	        else
+//             if (Input.GetButton("Character Control Down"))
+// 	        {
+// 	            rigidbody.AddForce(m_vDefaultForceCharControl.x * 0.0f, -m_vDefaultForceCharControl.y, 0.0f);
+// 	        }
+// 	        else 
+            if (Input.GetButton("Character Control Right"))
 	        {
 	            rigidbody.AddForce(m_vDefaultForceCharControl.x, m_vDefaultForceCharControl.y * 0.0f, 0.0f);
 	        }
@@ -105,6 +108,8 @@ public class Player : MonoBehaviour
 
     public void OnReset()
     {
+        if (hingeJoint != null)
+            Destroy(hingeJoint);
         m_vOrigPos = Game.Instance.CurrLevel.GetPlayerPlacement();
         m_fAddForceTimer = 0.0f;
         m_fResetableTimer = 1.0f;
@@ -150,4 +155,9 @@ public class Player : MonoBehaviour
     /// ACCESSORS/MUTATORS
     /// </summary>
     /// 
+    public GameObject Hand
+    {
+        get { return m_Hand; }
+        set { m_Hand = value; }
+    }
 }

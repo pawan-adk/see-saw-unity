@@ -23,4 +23,15 @@ public class ResetTransforms : MonoBehaviour
             transform.rotation = vOriginalRotation;
         }
     }
+
+    void FixedUpdate()
+    {
+        if (Input.GetButtonDown("Reset"))
+        {
+            if (rigidbody != null)
+            {
+                rigidbody.Sleep();
+            }
+        }
+    }
 }

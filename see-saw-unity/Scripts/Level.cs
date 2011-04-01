@@ -94,9 +94,13 @@ public class Level : MonoBehaviour
                 if (m_SeeSawObject)
 	                m_SeeSawObject.GetComponent<SeeSaw>().OnWeightDropped();
 	        }
-	        else if (Input.GetMouseButtonUp(0))
-	            if (ZoomInOutBtn != null && ZoomInOutBtn.guiTexture.HitTest(Input.mousePosition))
-	                m_PlayerCam.ToggleZoom();
+            else if (Input.GetMouseButtonUp(0))
+            {
+                if (ZoomInOutBtn != null && ZoomInOutBtn.guiTexture.HitTest(Input.mousePosition))
+                    m_PlayerCam.ToggleZoom();
+            }
+            else if (Input.GetButtonDown("Zoom Toggle"))
+                m_PlayerCam.ToggleZoom();
 	        
 	        m_Game.LateUpdate();
         }
