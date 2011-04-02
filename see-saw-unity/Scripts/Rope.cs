@@ -3,12 +3,17 @@ using System.Collections;
 
 public class Rope : MonoBehaviour
 {
+    enum eClimbingStatus { CS_UP, CS_DOWN, CS_NONE, };
+
     bool m_bPlayerAttached;
+    eClimbingStatus m_eCurrClimbingStatus;
 
     int m_nConnectedLinkIndex;
 
     public float ArmDist;
     public float MaxGrabDistance;
+    public float ClimbSpeed;
+    public float NextLinkThreshold = 0.25f;
 
     Rigidbody[] m_lLinks;
 
@@ -19,6 +24,7 @@ public class Rope : MonoBehaviour
 
     void Start()
     {
+        m_eCurrClimbingStatus = eClimbingStatus.CS_NONE;
         m_bPlayerAttached = false;
         m_lLinks = GetComponentsInChildren<Rigidbody>();
 
@@ -60,40 +66,81 @@ public class Rope : MonoBehaviour
         }
         else if (m_bPlayerAttached)
         {
+            // get grabbing input
             if (Input.GetButtonUp("Action Btn 1"))
             {
                  Destroy(m_Player.hingeJoint);
                  m_bPlayerAttached = false;
             }
-            else if (Input.GetButtonDown("Character Control Up"))
+
+            // TODO:: need to determine if we want it to pause & require the player
+            //        let go of the button or allow them to continually hold it
+            //        in which case the movement would pause for a bit then continue to the next
+
+            // get climbing input
+            if (m_eCurrClimbingStatus == eClimbingStatus.CS_NONE)
             {
+	            if (Input.GetButtonDown("Character Control Up"))
+	                m_eCurrClimbingStatus = eClimbingStatus.CS_UP;
+	            else if (Input.GetButtonDown("Character Control Down"))
+	                m_eCurrClimbingStatus = eClimbingStatus.CS_DOWN;
+            }
+
+            // perform climbing - up/down
+            if (m_eCurrClimbingStatus == eClimbingStatus.CS_UP)
+            {
+                // we haven't reached the top yet...keep going
                 if (m_nConnectedLinkIndex + 1 < m_lLinks.Length)
                 {
+                    // by getting the vector from the player's position to the hand,
+                    // we know which direction to move in
                     Vector3 vDistToHand = m_Player.transform.position - m_PlayerScript.Hand.transform.position;
 
-                    // determine if the hand is close enough to the next link 
-                    // to make that one the current
-                    if (vDistToHand.magnitude < 0.25f)
+                    // see if we've "arrived" at the next link yet, if so, stop moving
+                    if (vDistToHand.magnitude < NextLinkThreshold)
                     {
+                        m_eCurrClimbingStatus = eClimbingStatus.CS_NONE;
+
                         m_nConnectedLinkIndex++;
-
                         m_Player.transform.position = m_lLinks[m_nConnectedLinkIndex].position + vDistToHand;
+                        m_Player.hingeJoint.connectedBody = m_lLinks[m_nConnectedLinkIndex];
+                        Debug.Log("Current Link:" + m_nConnectedLinkIndex.ToString());
                     }
-
-                    m_Player.hingeJoint.connectedBody = m_lLinks[m_nConnectedLinkIndex];
-                    Debug.Log("Current Link:" + m_nConnectedLinkIndex.ToString());
+                    // otherwise we keep moving towards that link
+                    else
+                    {
+                        m_Player.transform.position = m_lLinks[m_nConnectedLinkIndex+1].position + (vDistToHand * ClimbSpeed * Time.deltaTime);
+                    }
                 }
+                else  // reached the top...can't climb anymore
+                    m_eCurrClimbingStatus = eClimbingStatus.CS_NONE;
             }
-            else if (Input.GetButtonDown("Character Control Down"))
+            else if (m_eCurrClimbingStatus == eClimbingStatus.CS_DOWN)
             {
                 if (m_nConnectedLinkIndex - 1 > -1)
                 {
-                    m_nConnectedLinkIndex--;
-                    Vector3 vDistToHand = m_Player.transform.position - m_PlayerScript.Hand.transform.position;                    
-                    m_Player.transform.position = m_lLinks[m_nConnectedLinkIndex].position + vDistToHand;
-                    m_Player.hingeJoint.connectedBody = m_lLinks[m_nConnectedLinkIndex];
-                    Debug.Log("Current Link:" + m_nConnectedLinkIndex.ToString());
+                    // by getting the vector from the player's position to the hand,
+                    // we know which direction to move in
+                    Vector3 vDistToHand = m_Player.transform.position - m_PlayerScript.Hand.transform.position;
+
+                    // see if we've "arrived" at the next link yet, if so, stop moving
+                    if (vDistToHand.magnitude < NextLinkThreshold)
+                    {
+                        m_eCurrClimbingStatus = eClimbingStatus.CS_NONE;
+
+	                    m_nConnectedLinkIndex--;
+                        m_Player.transform.position = m_lLinks[m_nConnectedLinkIndex].position + vDistToHand;
+                        m_Player.hingeJoint.connectedBody = m_lLinks[m_nConnectedLinkIndex];
+                        Debug.Log("Current Link:" + m_nConnectedLinkIndex.ToString());
+                    }
+                    // otherwise we keep moving towards that link
+                    else
+                    {
+                        m_Player.transform.position = m_lLinks[m_nConnectedLinkIndex-1].position + (vDistToHand * ClimbSpeed * Time.deltaTime);
+                    }
                 }
+                else  // reached the bottom...can't climb anymore
+                    m_eCurrClimbingStatus = eClimbingStatus.CS_NONE;
             }
         }
     }
