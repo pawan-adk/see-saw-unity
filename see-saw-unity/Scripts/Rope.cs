@@ -69,9 +69,17 @@ public class Rope : MonoBehaviour
             {
                 if (m_nConnectedLinkIndex + 1 < m_lLinks.Length)
                 {
-                    m_nConnectedLinkIndex++;
                     Vector3 vDistToHand = m_Player.transform.position - m_PlayerScript.Hand.transform.position;
-                    m_Player.transform.position = m_lLinks[m_nConnectedLinkIndex].position + vDistToHand;
+
+                    // determine if the hand is close enough to the next link 
+                    // to make that one the current
+                    if (vDistToHand.magnitude < 0.25f)
+                    {
+                        m_nConnectedLinkIndex++;
+
+                        m_Player.transform.position = m_lLinks[m_nConnectedLinkIndex].position + vDistToHand;
+                    }
+
                     m_Player.hingeJoint.connectedBody = m_lLinks[m_nConnectedLinkIndex];
                     Debug.Log("Current Link:" + m_nConnectedLinkIndex.ToString());
                 }
