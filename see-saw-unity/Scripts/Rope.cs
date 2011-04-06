@@ -17,12 +17,13 @@ public class Rope : MonoBehaviour
     Rigidbody[] m_lLinks;
 
     GameObject  m_Player;
-    Vector3 m_vSimHandPos;
     Player m_PlayerScript;
+    //Vector3 m_vSimHandPos;
 
-    GameObject m_Hand;
-    GameObject m_Target;
-    GameObject m_Start;
+    GameObject m_Hand;  // represents the current hand position
+    GameObject m_Target;// represents the target position when moving up/down rope
+    GameObject m_Start; // represents where the current up/down move started from
+
     ////////////////////////////////////////////////////////////////////////
 
     void Start()
@@ -55,12 +56,12 @@ public class Rope : MonoBehaviour
                 // TODO:: make this accurate obviously..
 
                 // find the point of the hand:
-                m_vSimHandPos = m_Player.transform.position + m_Player.transform.up * m_PlayerScript.HandOffset;
+                //m_vSimHandPos = m_Player.transform.position + m_Player.transform.up * m_PlayerScript.HandOffset;
 
                 m_nConnectedLinkIndex = -1;
                 // Determine which link the player's arm is nearest and "grab" onto that one:
                 for (int i = 0; i < m_lLinks.Length; ++i)
-                    if ((m_lLinks[i].transform.position - m_vSimHandPos).magnitude < MaxGrabDistance)
+                    if ((m_lLinks[i].transform.position - m_Hand.transform.position).magnitude < MaxGrabDistance)
                         m_nConnectedLinkIndex = i;
 
                 if (m_nConnectedLinkIndex > -1)
@@ -72,8 +73,8 @@ public class Rope : MonoBehaviour
                     m_Player.hingeJoint.connectedBody = m_lLinks[m_nConnectedLinkIndex];
                     m_Player.hingeJoint.anchor += m_Player.transform.up * 0.25f;
 
-                    m_vSimHandPos = m_Player.hingeJoint.connectedBody.transform.position;
-                    m_Player.transform.position = m_vSimHandPos + m_Player.transform.up * -m_PlayerScript.HandOffset;
+                    _SetPlayerHandPos(m_Player.hingeJoint.connectedBody.transform.position);
+                    //m_Player.transform.position = m_Hand.transform.position + m_Player.transform.up * -m_PlayerScript.HandOffset;
                 }
             }
         }
@@ -193,5 +194,16 @@ public class Rope : MonoBehaviour
                 m_eCurrClimbingStatus = eClimbingStatus.CS_NONE;
             }
         }
+    }
+
+    void _SetPlayerHandPos(Vector3 _pos)
+    {
+        m_Hand.transform.position = _pos;
+        _SetPlayerPosFromHand();
+    }
+
+    void _SetPlayerPosFromHand()
+    {
+        m_Player.transform.position = m_Hand.transform.position + m_Player.transform.up * -m_PlayerScript.HandOffset;
     }
 }
