@@ -6,11 +6,13 @@ using System.Collections;
 /// </summary>
 public class Level : MonoBehaviour
 {
-    public GameObject ZoomInOutBtn;
-
     GUIStyle m_GUIStyle = new GUIStyle();
-    
+
+    GameObject[] m_lCheckpoints;
+    GameObject m_CurrCheckpoint;
+
     //GameObject Ground;
+    //public GameObject ZoomInOutBtn;
     GameObject m_GoalTriggerObject;
     GameObject m_PlayerObject;
     GameObject m_PlayerCameraObject;
@@ -49,6 +51,9 @@ public class Level : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetButtonUp("Escape"))
+            m_Game.OnGotoMainMenu();
+
         //////////////////////////////////////////////////////////////////////////
         // Level Preview
         if (LevelPreviewTime > 0.0f)
@@ -76,7 +81,7 @@ public class Level : MonoBehaviour
             if (!m_bPlayerCameToRest)
                 _Reset();
             else
-                _ResetToNewPosition();
+                _ResetToNewCheckpoint();
         }
     }
 
@@ -94,11 +99,11 @@ public class Level : MonoBehaviour
                 if (m_SeeSawObject)
 	                m_SeeSawObject.GetComponent<SeeSaw>().OnWeightDropped();
 	        }
-            else if (Input.GetMouseButtonUp(0))
-            {
-                if (ZoomInOutBtn != null && ZoomInOutBtn.guiTexture.HitTest(Input.mousePosition))
-                    m_PlayerCam.ToggleZoom();
-            }
+//             else if (Input.GetMouseButtonUp(0))
+//             {
+//                 if (ZoomInOutBtn != null && ZoomInOutBtn.guiTexture.HitTest(Input.mousePosition))
+//                     m_PlayerCam.ToggleZoom();
+//             }
             else if (Input.GetButtonDown("Zoom Toggle"))
                 m_PlayerCam.ToggleZoom();
 	        
@@ -108,9 +113,10 @@ public class Level : MonoBehaviour
 
     void OnGUI()
     {
-        if (Application.loadedLevel > 0 && Application.loadedLevel <= Game.Instance.NumActualLevelsInWorld)
-        { 
-            GUI.Label(new Rect(150, 5, 100, 40), Game.Instance.PlayerInfo.Lives.ToString() + " Lives"/*, m_GUIStyle*/);
+        if (Application.loadedLevel > 0 && Application.loadedLevel <= Game.Instance.NumLevelsInWorld)
+        {
+            GUI.Label(new Rect(10, 5, 100, 40), m_Game.PlayerInfo.Lives.ToString() + " Lives"/*, m_GUIStyle*/);
+            GUI.Label(new Rect(70, 5, 200, 40), "World " + m_Game.CurrWorldNum.ToString() + ", Level " + m_Game.CurrLevelNum.ToString()/*, m_GUIStyle*/);
         }
     }
 
@@ -127,6 +133,13 @@ public class Level : MonoBehaviour
             m_fResetTimer = ResetTime;
         else
             m_fResetTimer = 0.0f;
+    }
+    public void OnCheckpointReached(GameObject _checkPoint)
+    {
+        Debug.Log("Checkpoint Reached");
+        m_CurrCheckpoint = _checkPoint;
+        ResetLevel(false, true);
+        //_ResetToNewCheckpoint();
     }
     
     public Vector3 GetLevelCenterPt()
@@ -153,7 +166,7 @@ public class Level : MonoBehaviour
 
         m_GoalTriggerObject = GameObject.Find("GoalTrigger");
 
-        m_SeeSawObject = GameObject.Find("SeeSaw");
+        m_SeeSawObject = GameObject.FindWithTag("SeeSaw");
         m_SeeSawObject.GetComponent<SeeSaw>().Init();
 
         m_PlayerObject = GameObject.Find("Player");
@@ -161,6 +174,8 @@ public class Level : MonoBehaviour
 
         m_PlayerCameraObject = GameObject.Find("PlayerCamera");
         m_PlayerCam = m_PlayerCameraObject.GetComponent<SmoothLookAtFollow>();
+
+        m_lCheckpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
     }
     private void _Reset()
     {
@@ -176,20 +191,23 @@ public class Level : MonoBehaviour
             m_PlayerCam.OnReset();
         }
     }
-    private void _ResetToNewPosition()
+    private void _ResetToNewCheckpoint()
     {
-        Debug.Log("Resetting Level, new pos:" + m_PlayerObject.transform.position.ToString());
+        Debug.Log("Resetting Level, new pos:" + m_CurrCheckpoint.transform.position.ToString());
         m_fResetTimer = -1.0f; // means no longer resetting
         m_Game.WeightDropped = m_Game.LaunchStarted = false;
         m_bPlayerCameToRest = false;
 
         if (m_SeeSawObject != null)
         {
-            m_SeeSawObject.GetComponent<SeeSaw>().OnResetToNewPosition(m_PlayerObject.transform.position);
+            if (m_CurrCheckpoint == null)
+                Debug.Log("currCP == null");
+            m_SeeSawObject.GetComponent<SeeSaw>().OnResetToNewCheckpoint(m_CurrCheckpoint.GetComponent<Checkpoint>().SeeSawPos);
             m_PlayerObject.GetComponent<Player>().OnReset();
             m_PlayerCam.SetNewZoomedInVars();
             m_PlayerCam.SetNewZoomedOutVars();
             m_PlayerCam.OnReset();
+            m_CurrCheckpoint.GetComponent<Checkpoint>().DestroyDummySeeSaw();
         }
     }
 
@@ -209,5 +227,9 @@ public class Level : MonoBehaviour
     public bool Resetting
     {
         get { return m_fResetTimer > 0.0f; }
+    }
+    public GameObject CurrCheckpoint
+    {
+        get { return m_CurrCheckpoint; }
     }
 }

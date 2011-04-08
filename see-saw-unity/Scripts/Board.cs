@@ -29,7 +29,7 @@ public class Board : MonoBehaviour
         rigidbody.transform.rotation = m_vOrigRot;
         rigidbody.transform.position = m_vOrigPos;
     }
-    public void OnResetToNewPosition(Vector3 _pos)
+    public void OnResetToNewCheckpoint(Vector3 _pos)
     {
         m_vOrigPos.x = _pos.x;
 

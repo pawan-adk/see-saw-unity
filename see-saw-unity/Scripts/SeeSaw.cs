@@ -27,13 +27,13 @@ public class SeeSaw : MonoBehaviour
         m_WedgeObject.GetComponent<Wedge>().OnReset();
         m_BoardObject.GetComponent<Board>().OnReset();
     }
-    public void OnResetToNewPosition(Vector3 _pos)
+    public void OnResetToNewCheckpoint(Vector3 _pos)
     {
-        transform.position = new Vector3(_pos.x, transform.position.y, transform.position.z);
+        transform.position = new Vector3(_pos.x, transform.position.y, _pos.z);
 
-        m_WedgeObject.GetComponent<Wedge>().OnResetToNewPosition(_pos);
-        m_BoardObject.GetComponent<Board>().OnResetToNewPosition(_pos);
-        m_WeightObject.GetComponent<Weight>().OnResetToNewPosition(_pos);
+        m_WedgeObject.GetComponent<Wedge>().OnResetToNewCheckpoint(_pos);
+        m_BoardObject.GetComponent<Board>().OnResetToNewCheckpoint(_pos);
+        m_WeightObject.GetComponent<Weight>().OnResetToNewCheckpoint(_pos);
         m_LaunchTrigger.transform.position = _pos + m_LaunchTriggerOffset;
     }
     public void OnWeightDropped()

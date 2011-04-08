@@ -89,7 +89,7 @@ public class Trampoline_OneWay : MonoBehaviour
         if (info.gameObject.name == "Player")
         {
             m_bPlayerInTrigger = false;
-            Debug.Log("No Longer colliding with tramp");
+            //Debug.Log("No Longer colliding with tramp");
         }
     }
 

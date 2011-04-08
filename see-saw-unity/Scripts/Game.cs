@@ -14,9 +14,9 @@ public class Game
     int m_nCurrLevel;
     int m_nCurrWorld;
 
-    int m_nNumActualLevelsInWorld;
+    int m_nNumLevelsInWorld;
     int m_nNumWorlds;
-    int m_nNumMenus;
+    //int m_nNumMenus;
 
     PlayerInfo m_PlayerInfo;
     Level m_CurrLevel;
@@ -28,10 +28,11 @@ public class Game
             return;
         instance = this;
 
-        // TODO:: figure out a better dynamic way to do this:
-        m_nNumMenus = 3;
-        m_nNumActualLevelsInWorld = Application.levelCount - m_nNumMenus;
+        //m_nNumMenus = 3;
+        m_nNumLevelsInWorld = 8;
         m_nNumWorlds = 1;
+        m_nCurrWorld = 1;
+        m_nCurrLevel = Application.loadedLevel;
     }
 
     public void Update()
@@ -45,9 +46,8 @@ public class Game
 
     public void NextLevel()
     {
-
         // TODO:: increment g_nCurrLevel/g_nCurrWorld first:
-        if (++m_nCurrLevel <= m_nNumActualLevelsInWorld)
+        if (++m_nCurrLevel <= m_nNumLevelsInWorld)
         {
             Debug.Log("Loading next level:" + m_nCurrLevel.ToString());
             Application.LoadLevel(m_nCurrLevel);
@@ -62,7 +62,7 @@ public class Game
     {
         Debug.Log("RedoCurrLevel:" + m_nCurrLevel.ToString());
         m_PlayerInfo.RevertToDefaults();
-        Application.LoadLevel(m_nCurrLevel);
+        Application.LoadLevel(GetLevelIndex(m_nCurrLevel, m_nCurrWorld));
     }
 
     public void StartGame(int _level, int _world)
@@ -70,7 +70,15 @@ public class Game
         Debug.Log("StartGame called, Level:" + _level.ToString());
         m_nCurrLevel = _level;
         m_nCurrWorld = _world;
-        Application.LoadLevel(m_nCurrLevel);
+        Application.LoadLevel(GetLevelIndex(m_nCurrLevel, m_nCurrWorld));
+    }
+
+    public void StartPractice()
+    {
+        Debug.Log("StartPractice called");
+        //m_nCurrLevel = _level;
+        //m_nCurrWorld = _world;
+        Application.LoadLevel("PracticeLevel");
     }
 
     // called from level's start
@@ -85,7 +93,11 @@ public class Game
 
     public void OnGoalReached()
     {
-        if (m_nCurrLevel == m_nNumActualLevelsInWorld && m_nCurrWorld == m_nNumWorlds)
+        if (Application.loadedLevelName == "PracticeLevel")
+        {
+            m_CurrLevel.ResetLevel(false, false);
+        }
+        else if (m_nCurrLevel == m_nNumLevelsInWorld && m_nCurrWorld == m_nNumWorlds)
         {
             // TODO:: celebrate this world complete or something, go to next world
             Application.LoadLevel("MainMenu");
@@ -119,6 +131,11 @@ public class Game
         return CurrLevel.GetPlayerPlacement();
     }
 
+    private int GetLevelIndex(int _lvl, int _world)
+    {
+        return _lvl + (_world - 1) * m_nNumLevelsInWorld;
+    }
+
     /// <summary>
     /// ACCESSORS/MUTATORS
     /// </summary>
@@ -127,10 +144,10 @@ public class Game
         get { return m_CurrLevel; }
         set { m_CurrLevel = value; }
     }
-    public int NumActualLevelsInWorld
+    public int NumLevelsInWorld
     {
-        get { return m_nNumActualLevelsInWorld; }
-        set { m_nNumActualLevelsInWorld = value; }
+        get { return m_nNumLevelsInWorld; }
+        set { m_nNumLevelsInWorld = value; }
     }
     public int CurrWorldNum
     {

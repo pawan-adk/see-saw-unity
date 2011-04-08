@@ -5,6 +5,7 @@ public class MainMenu : MonoBehaviour
 {
     GUIText m_PlayGame;
     GUIText m_ExitGame;
+    GUIText m_Practice;
 
     Game m_Game;
 
@@ -12,6 +13,7 @@ public class MainMenu : MonoBehaviour
     {
         m_PlayGame = GameObject.Find("PlayGame").guiText;
         m_ExitGame = GameObject.Find("ExitGame").guiText;
+        m_Practice = GameObject.Find("Practice").guiText;
         m_Game = Game.Instance;
     }
 
@@ -28,6 +30,10 @@ public class MainMenu : MonoBehaviour
 	        {
                 Application.Quit();
 	        }
+            else if (m_Practice.HitTest(Input.mousePosition))
+            {
+                m_Game.StartPractice();
+            }
         }
     }
 }

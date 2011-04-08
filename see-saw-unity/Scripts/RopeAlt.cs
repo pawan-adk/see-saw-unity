@@ -23,8 +23,8 @@ public class RopeAlt : MonoBehaviour
     Player m_PlayerScript;
 
     GameObject m_Hand;  // represents the current hand position
-    GameObject m_Target;// represents the target position when moving up/down rope
-    GameObject m_Start; // represents where the current up/down move started from
+    Vector3 m_Target;// represents the target position when moving up/down rope
+    Vector3 m_Start; // represents where the current up/down move started from
 
     ////////////////////////////////////////////////////////////////////////
 
@@ -36,8 +36,6 @@ public class RopeAlt : MonoBehaviour
         m_fMoveTimer = MoveDelay;
 
         m_Hand = GameObject.Find("TestHand");
-        m_Target = GameObject.Find("ClimbTarget");
-        m_Start = GameObject.Find("ClimbStart");
         m_Player = GameObject.Find("Player");
         m_PlayerScript = m_Player.GetComponent<Player>();
 
@@ -86,7 +84,7 @@ public class RopeAlt : MonoBehaviour
                 m_fMoveTimer += Time.deltaTime;
 
             m_Player.rigidbody.isKinematic = true;
-            m_Start.transform.position = m_lLinks[m_nConnectedLinkIndex].position;
+            m_Start = m_lLinks[m_nConnectedLinkIndex].position;
 
             // get grabbing input
             if (Input.GetButtonUp("Action Btn 1"))
@@ -105,7 +103,7 @@ public class RopeAlt : MonoBehaviour
             // get climbing input
             if (m_eCurrClimbingStatus == eClimbingStatus.CS_NONE)
             {
-                _SetPlayerHandPos(m_Start.transform.position);
+                _SetPlayerHandPos(m_Start);
                 _SetPlayerPosFromHand();
 
                 // make sure they can still go up/down first
@@ -117,7 +115,6 @@ public class RopeAlt : MonoBehaviour
                     m_fMoveTimer = 0.0f;
                     m_bMoveCompleted = false;
                     m_eCurrClimbingStatus = eClimbingStatus.CS_UP;
-                    m_Target.transform.position = m_lLinks[m_nConnectedLinkIndex + 1].position;
                 }
                 else if (m_fMoveTimer >= MoveDelay && 
                         Input.GetButton("Character Control Down") && 
@@ -127,12 +124,11 @@ public class RopeAlt : MonoBehaviour
                     m_fMoveTimer = 0.0f;
                     m_bMoveCompleted = false;
                     m_eCurrClimbingStatus = eClimbingStatus.CS_DOWN;
-                    m_Target.transform.position = m_lLinks[m_nConnectedLinkIndex - 1].position;
                 }
             }
             else if (m_eCurrClimbingStatus == eClimbingStatus.CS_UP)
             {
-                m_Target.transform.position = m_lLinks[m_nConnectedLinkIndex + 1].position;
+                //m_Target = m_lLinks[m_nConnectedLinkIndex + 1].position;
 
                 Vector3 vDir = (m_lLinks[m_nConnectedLinkIndex + 1].position - m_Hand.transform.position);
                 float dist = vDir.magnitude;
@@ -153,7 +149,7 @@ public class RopeAlt : MonoBehaviour
             }
             else if (m_eCurrClimbingStatus == eClimbingStatus.CS_DOWN)
             {
-                m_Target.transform.position = m_lLinks[m_nConnectedLinkIndex - 1].position;
+                //m_Target = m_lLinks[m_nConnectedLinkIndex - 1].position;
 
                 Vector3 vDir = (m_lLinks[m_nConnectedLinkIndex - 1].position - m_Hand.transform.position);
                 float dist = vDir.magnitude;
