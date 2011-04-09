@@ -7,10 +7,10 @@ Direct3D:
 desktop: 1920x1200 59Hz; virtual: 1920x1200 at 0,0
 <I> Initializing (RawInput).
 <RI> Input initialized.
-Non platform assembly: data-025E9AA0 (this message is harmless)
-Non platform assembly: data-0264DDD8 (this message is harmless)
-Non platform assembly: data-02650C50 (this message is harmless)
-Non platform assembly: data-026586C8 (this message is harmless)
+Non platform assembly: data-024F9B00 (this message is harmless)
+Non platform assembly: data-0255DDE0 (this message is harmless)
+Non platform assembly: data-02560C58 (this message is harmless)
+Non platform assembly: data-025686D0 (this message is harmless)
 Game instance created (CTOR)
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)
@@ -39,6 +39,38 @@ Level:Start()
  
 (Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
 
+Resetting Level
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_Reset()
+Level:LateUpdate()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Resetting Level
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_Reset()
+Level:LateUpdate()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Resetting Level
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_Reset()
+Level:LateUpdate()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Resetting Level
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_Reset()
+Level:LateUpdate()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
 
 Unloading 82 unused Assets to reduce memory usage. Loaded Objects now: 136.
 Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
@@ -58,6 +90,76 @@ UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)
 Level:_InitCommonObjects()
 Level:Start()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Checkpoint Reached
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:OnCheckpointReached(GameObject)
+Checkpoint:OnTriggerEnter(Collider)
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Resetting Level, new pos:(-221.7, 2.4, 0.0)
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_ResetToNewCheckpoint()
+Level:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Resetting Level
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_Reset()
+Level:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Resetting Level
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_Reset()
+Level:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+
+Unloading 84 unused Assets to reduce memory usage. Loaded Objects now: 140.
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+RedoCurrLevel:2
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Game:RedoCurrLevel()
+DefeatMenu:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+
+Unloading 0 unused Assets to reduce memory usage. Loaded Objects now: 1897.
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+Init Common Objs
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_InitCommonObjects()
+Level:Start()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Checkpoint Reached
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:OnCheckpointReached(GameObject)
+Checkpoint:OnTriggerEnter(Collider)
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Resetting Level, new pos:(-221.7, 2.4, 0.0)
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_ResetToNewCheckpoint()
+Level:Update()
  
 (Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
 
@@ -129,6 +231,14 @@ Level:Start()
  
 (Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
 
+Resetting Level
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_Reset()
+Level:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
 Checkpoint Reached
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)
@@ -146,9 +256,75 @@ Level:Update()
 (Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
 
 
+Unloading 94 unused Assets to reduce memory usage. Loaded Objects now: 140.
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+RedoCurrLevel:4
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Game:RedoCurrLevel()
+DefeatMenu:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+
+Unloading 0 unused Assets to reduce memory usage. Loaded Objects now: 3366.
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+Init Common Objs
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_InitCommonObjects()
+Level:Start()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+
 Unloading 94 unused Assets to reduce memory usage. Loaded Objects now: 136.
 Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
 Loading next level:5
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Game:NextLevel()
+VictoryMenu:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+
+Unloading 0 unused Assets to reduce memory usage. Loaded Objects now: 199.
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+Init Common Objs
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_InitCommonObjects()
+Level:Start()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+
+Unloading 18 unused Assets to reduce memory usage. Loaded Objects now: 136.
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+Loading next level:6
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Game:NextLevel()
+VictoryMenu:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+
+Unloading 0 unused Assets to reduce memory usage. Loaded Objects now: 199.
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+Init Common Objs
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_InitCommonObjects()
+Level:Start()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+
+Unloading 18 unused Assets to reduce memory usage. Loaded Objects now: 136.
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+Loading next level:7
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)
 Game:NextLevel()
