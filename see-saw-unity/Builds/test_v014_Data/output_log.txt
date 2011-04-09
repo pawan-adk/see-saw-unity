@@ -7,10 +7,17 @@ Direct3D:
 desktop: 1680x1050 59Hz; virtual: 2704x1050 at 0,0
 <I> Initializing (RawInput).
 <RI> Input initialized.
+<<<<<<< .mine
+Non platform assembly: data-025DCA00 (this message is harmless)
+Non platform assembly: data-02640A88 (this message is harmless)
+Non platform assembly: data-02643900 (this message is harmless)
+Non platform assembly: data-0264A978 (this message is harmless)
+=======
 Non platform assembly: data-017200F0 (this message is harmless)
 Non platform assembly: data-01784AE8 (this message is harmless)
 Non platform assembly: data-01787D58 (this message is harmless)
 Non platform assembly: data-0178E1A0 (this message is harmless)
+>>>>>>> .r122
 Game instance created (CTOR)
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)
@@ -137,6 +144,15 @@ Level:Start()
  
 (Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
 
+<<<<<<< .mine
+Resetting Level
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_Reset()
+Level:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+=======
 Resetting Level
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)
@@ -144,7 +160,21 @@ Level:_Reset()
 Level:LateUpdate()
  
 (Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+>>>>>>> .r122
 
+<<<<<<< .mine
+Resetting Level
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_Reset()
+Level:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+
+Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 135.
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+=======
 Resetting Level
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)
@@ -606,3 +636,4 @@ Level:LateUpdate()
  
 (Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
 
+>>>>>>> .r122
