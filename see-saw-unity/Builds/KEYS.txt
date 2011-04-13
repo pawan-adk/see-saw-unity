@@ -3,11 +3,12 @@ S - move weight down
 A - move wedge left
 D - move wedge right
 
-J - grab onto rope (hold...let go to let go of rope)
+J - Action Btn 1 (A) 
+     	- grab onto rope (hold...let go to let go of rope)
+	- wall jump
+	- extra boost from jump pad
 
 Z - toggle between zoom in/out
 
 R - reset
 SPACE - drop weight
-
-click on image in top-left to switch between zoom out view & zoom in
