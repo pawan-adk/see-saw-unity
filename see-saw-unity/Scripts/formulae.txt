@@ -1,0 +1,33 @@
+Free falling object:
+delta(v) = a * t
+delta(s) = .5a * t^2
+
+Velocity:
+v = v0 + at
+
+Force:
+F = ma
+
+Angular Velocity:
+w = w0 + angularAccel * t (angular acceleration is constant)
+w = angularDisplacement / t
+
+(w == angular velocity)
+
+Angular Displacement:
+theta = w0 * t + 5 * a * t^2
+
+Conservation of Momentum:
+m1u1 + m2u2 = m1v1 + m2v2
+
+final velocities (head-on collision):
+
+v1 = (m1-m2/m1+m2) * u1 + (2m2/m1+m2) * u2
+v2 = (m2-m1/m1+m2) * u2 + (2m1/m1+m2) * u1
+
+arc length:
+L = (angle * pi * r) / 180 -- in degrees
+
+L = angle * r -- in rads
+
+
