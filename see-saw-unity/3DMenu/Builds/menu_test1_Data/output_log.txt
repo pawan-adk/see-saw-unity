@@ -1,17 +1,13 @@
 Direct3D:
-    Version:  Direct3D 9.0c [aticfx32.dll 8.17.10.1052]
-    Renderer: ATI Radeon HD 5700 Series
-    Vendor:   ATI
-    VRAM:     1024 MB
-    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=1 DF24=1 INTZ=1 RAWZ=0 NULL=1 RESZ=1 SlowINTZ=1
-desktop: 1280x1024 60Hz; virtual: 2560x1024 at 0,0
+    Version:  Direct3D 9.0c [nv4_disp.dll 6.14.11.8585]
+    Renderer: NVIDIA Quadro FX 1600M
+    Vendor:   NVIDIA
+    VRAM:     512 MB
+    Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 DF24=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
+desktop: 1680x1050 59Hz; virtual: 2704x1050 at 0,0
 <I> Initializing (RawInput).
 <RI> Input initialized.
-Non platform assembly: data-085F0048 (this message is harmless)
-Non platform assembly: data-03086E80 (this message is harmless)
-Non platform assembly: data-03089EA0 (this message is harmless)
-Non platform assembly: data-030906A8 (this message is harmless)
-Your 64 bit Windows installation is missing an imporant service pack patch. Please apply http://support.microsoft.com/kb/976038 to ensure stability.
- 
-(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/PlatformDependent/Win/wow64.cpp Line: 42)
-
+Non platform assembly: data-01720130 (this message is harmless)
+Non platform assembly: data-01784B18 (this message is harmless)
+Non platform assembly: data-01788628 (this message is harmless)
+Non platform assembly: data-0178F9F8 (this message is harmless)
