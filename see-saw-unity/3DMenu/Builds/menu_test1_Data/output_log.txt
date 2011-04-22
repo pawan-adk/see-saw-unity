@@ -4,10 +4,10 @@ Direct3D:
     Vendor:   NVIDIA
     VRAM:     512 MB
     Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 DF24=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
-desktop: 1680x1050 59Hz; virtual: 2704x1050 at 0,0
+desktop: 1680x1050 60Hz; virtual: 3600x1080 at 0,0
 <I> Initializing (RawInput).
 <RI> Input initialized.
-Non platform assembly: data-01720130 (this message is harmless)
-Non platform assembly: data-01784B18 (this message is harmless)
-Non platform assembly: data-01788628 (this message is harmless)
-Non platform assembly: data-0178F9F8 (this message is harmless)
+Non platform assembly: data-01720138 (this message is harmless)
+Non platform assembly: data-01784B20 (this message is harmless)
+Non platform assembly: data-01788630 (this message is harmless)
+Non platform assembly: data-0178FA00 (this message is harmless)
