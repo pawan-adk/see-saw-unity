@@ -1,13 +1,719 @@
 Direct3D:
-    Version:  Direct3D 9.0c [nv4_disp.dll 6.14.11.8585]
-    Renderer: NVIDIA Quadro FX 1600M
+    Version:  Direct3D 9.0c [nvd3dum.dll 7.15.11.7597]
+    Renderer: NVIDIA GeForce 8600M GT 
     Vendor:   NVIDIA
-    VRAM:     512 MB
+    VRAM:     4095 MB
     Caps:     Shader=30 DepthRT=1 NativeDepth=1 NativeShadow=1 DF16=0 DF24=0 INTZ=1 RAWZ=0 NULL=1 RESZ=0 SlowINTZ=0
-desktop: 1680x1050 60Hz; virtual: 1920x2130 at 0,-1080
+desktop: 1280x800 60Hz; virtual: 1280x800 at 0,0
 <I> Initializing (RawInput).
 <RI> Input initialized.
-Non platform assembly: data-01860310 (this message is harmless)
-Non platform assembly: data-018C4BD8 (this message is harmless)
-Non platform assembly: data-018C7E48 (this message is harmless)
-Non platform assembly: data-018E2090 (this message is harmless)
+Non platform assembly: data-023E9E08 (this message is harmless)
+Non platform assembly: data-0244E1C0 (this message is harmless)
+Non platform assembly: data-02451F78 (this message is harmless)
+Non platform assembly: data-0246BD30 (this message is harmless)
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 263.
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+Game instance created (CTOR)
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Game:.ctor()
+Game:get_Instance()
+LevelSelect:Start()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+StartGame called, Level:9
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Game:StartGame(Int32, Int32)
+LevelSelect:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+
+Unloading 29 unused Assets to reduce memory usage. Loaded Objects now: 2035.
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+Init Common Objs
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_InitCommonObjects()
+Level:Start()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Resetting Level
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_Reset()
+Level:LateUpdate()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Link found:5
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Let go, velocity before:(0.0, 0.0, 0.0)
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Let go, velocity after:(10.7, 9.7, 0.0)
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Resetting Level
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_Reset()
+Level:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Link found:2
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Let go, velocity before:(0.0, 0.0, 0.0)
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Let go, velocity after:(9.0, 8.6, 0.0)
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Resetting Level
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_Reset()
+Level:LateUpdate()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Link found:4
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Let go, velocity before:(0.0, 0.0, 0.0)
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Let go, velocity after:(5.9, 12.2, 0.0)
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Link found:13
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Moving down
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.7145844
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.6410391
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.5331649
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.390578
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.2138883
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Climbing Down Done, index:12
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Moving down
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.7020018
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.6258796
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.5090692
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.3554962
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.1685257
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Climbing Down Done, index:11
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Moving down
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.6839126
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.6183516
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.5176221
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.3831906
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.2144756
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Climbing Down Done, index:10
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Moving down
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.6876534
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.6135225
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.5016288
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.3431844
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.1545976
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Climbing Down Done, index:9
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Moving down
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.6813315
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.6058782
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.4907296
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.3429939
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.1504018
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Climbing Down Done, index:8
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Moving down
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.70222
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.6331624
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.5376678
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.399432
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.2079999
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Climbing Down Done, index:7
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Moving down
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.630238
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.5437351
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.3754339
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.162495
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Climbing Down Done, index:6
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Moving down
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.6702729
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.6057228
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.50239
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.3410101
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.1614151
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Climbing Down Done, index:5
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Moving down
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.68927
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.6078541
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.4826426
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.3478629
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Dist:0.1497523
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Climbing Down Done, index:4
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Let go, velocity before:(0.0, 0.0, 0.0)
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Let go, velocity after:(5.9, -3.2, 0.0)
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Resetting Level
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_Reset()
+Level:LateUpdate()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Link found:4
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Let go, velocity before:(0.0, 0.0, 0.0)
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Let go, velocity after:(5.0, 15.0, 0.0)
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+RopeAlt:Update()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+Resetting Level
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_Reset()
+Level:LateUpdate()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+
+Unloading 107 unused Assets to reduce memory usage. Loaded Objects now: 258.
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+StartPractice called
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Game:StartPractice()
+MenuOption:OnMouseUp()
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.MouseOverPair:SendMessage(String)
+UnityEngine.SendMouseEvents:DoSendMouseEvents()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 665.
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+Init Common Objs
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_InitCommonObjects()
+Level:Start()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+
+Unloading 53 unused Assets to reduce memory usage. Loaded Objects now: 258.
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 0 unused Assets to reduce memory usage. Loaded Objects now: 258.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+StartPractice called
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Game:StartPractice()
+MenuOption:OnMouseUp()
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.MouseOverPair:SendMessage(String)
+UnityEngine.SendMouseEvents:DoSendMouseEvents()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 665.
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+Init Common Objs
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_InitCommonObjects()
+Level:Start()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+
+Unloading 53 unused Assets to reduce memory usage. Loaded Objects now: 258.
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 0 unused Assets to reduce memory usage. Loaded Objects now: 258.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 15 unused Assets to reduce memory usage. Loaded Objects now: 303.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 24 unused Assets to reduce memory usage. Loaded Objects now: 258.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 0 unused Assets to reduce memory usage. Loaded Objects now: 258.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+StartPractice called
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Game:StartPractice()
+MenuOption:OnMouseUp()
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+UnityEngine.MouseOverPair:SendMessage(String)
+UnityEngine.SendMouseEvents:DoSendMouseEvents()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+
+Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 665.
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+Init Common Objs
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Level:_InitCommonObjects()
+Level:Start()
+ 
+(Filename: C:/BuildAgent/work/6bc5f79e0a4296d6/Runtime/ExportGenerated/StandalonePlayer/BaseClass.cpp Line: 2505)
+
+
+Unloading 53 unused Assets to reduce memory usage. Loaded Objects now: 258.
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
+
+Unloading 0 unused Assets to reduce memory usage. Loaded Objects now: 258.
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0 / Dirty serialized files: 0)
