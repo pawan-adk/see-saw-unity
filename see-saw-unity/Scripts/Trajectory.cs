@@ -109,7 +109,7 @@ public class Trajectory : MonoBehaviour
         float ad = L / Rp;
 
         // 3. calculate the time at which separation will occur
-        float t = Mathf.Sqrt(a / (0.5f * m_fGravity));
+        float t = Mathf.Sqrt(L / (0.5f * m_fGravity));
         
         // 4. calculate the angular velocity at time t
         float w = ad / t;
