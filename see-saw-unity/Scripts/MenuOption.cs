@@ -40,7 +40,7 @@ public class MenuOption : MonoBehaviour
 #if UNITY_IPHONE
 
         // see if the ray hits the button
-        if (Input.GetTouch(0).phase == TouchPhase.Ended)
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
         {
             Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y));
             if (collider.bounds.IntersectRay(ray))
