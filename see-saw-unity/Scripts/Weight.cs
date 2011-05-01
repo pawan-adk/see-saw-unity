@@ -16,6 +16,7 @@ public class Weight : MonoBehaviour
     public GameObject WedgeObject;
     public GameObject PlayerObject;
 
+
 	void Start ()
     {
         rigidbody.isKinematic = true;
@@ -24,24 +25,26 @@ public class Weight : MonoBehaviour
 
         m_vOrigRot = rigidbody.rotation;
         m_vOrigPos = rigidbody.position;
+
 	}
 	
 	void Update ()
 	{
         if (!Game.Instance.WeightDropped && Game.Instance.PreviewDone)
-		{
+        {
             if (Input.GetButton("Move Weight Up") && m_fCurrMoveDist < MaxMoveDist)
-			{
+            {
                 m_fCurrMoveDist += MoveSpeed * Time.deltaTime;
                 transform.position += Vector3.up * MoveSpeed * Time.deltaTime;
-			}		
-			else if (Input.GetButton("Move Weight Down") && m_fCurrMoveDist > -MaxMoveDist)
-			{
+            }
+            else if (Input.GetButton("Move Weight Down") && m_fCurrMoveDist > -MaxMoveDist)
+            {
                 m_fCurrMoveDist -= MoveSpeed * Time.deltaTime;
                 transform.position -= Vector3.up * MoveSpeed * Time.deltaTime;
             }
-		}
-	}
+        }
+    }
+
 
     public void OnReset()
     {

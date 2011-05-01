@@ -24,7 +24,7 @@ public class MainMenu : MonoBehaviour
 	        if (m_PlayGame.HitTest(Input.mousePosition))
 	        {
 	            // TODO:: player needs to be able to load a saved level (in a certain world)
-	            m_Game.StartGame(1, 1);
+                Application.LoadLevel("LevelSelect");
 	        }
             else if (m_ExitGame.HitTest(Input.mousePosition))
 	        {

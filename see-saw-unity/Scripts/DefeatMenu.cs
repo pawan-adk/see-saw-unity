@@ -41,7 +41,7 @@ public class DefeatMenu : MonoBehaviour
             {
                 Game.Instance.RedoCurrLevel();
             }
-            else if (m_MainMenu.collider.bounds.IntersectRay(ray)
+            else if (m_MainMenu.collider.bounds.IntersectRay(ray))
             {
                 // TODO:: perform any resetting necessary here:
                 Game.Instance.OnGotoMainMenu();

@@ -10,6 +10,8 @@ public class Trampoline_OneWay : MonoBehaviour
     // this establishes a maximum end force (after collision and the rebound is being calculated)
     // where anything below it will result in the player not bouncing back at all
     public float RestingThresholdForce = 400.0f;
+    // to keep the player from continuously bouncing to get higher and higher, cap the y force
+    public float MaxYForce = 2000.0f;
     // each collision with the pad reduces speed slightly, lower values reduce more
     public float Friction = 0.85f;
     // how "strong" the bounce pad is, directly influencing how fast the player
@@ -33,21 +35,21 @@ public class Trampoline_OneWay : MonoBehaviour
 
     void Update()
     {
-
     }
 
     void OnTriggerEnter(Collider info)
     {
-//         Debug.Log("Collided With Trampoline trigger");
-
         Vector3 vNorm = transform.up.normalized;
         Vector3 vVel = m_Player.rigidbody.velocity;
         float velX = Mathf.Abs(vVel.x) * Friction * vNorm.x * TensionConstant;
         float velY = Mathf.Abs(vVel.y) * Friction * vNorm.y * TensionConstant;
-        if (Mathf.Abs(velX) < RestingThresholdForce * vNorm.x)
-            velX = 0.0f;
+
+        // cap Y low
         if (Mathf.Abs(velY) < RestingThresholdForce * vNorm.y)
-            velY = 0.0f;
+            velY = RestingThresholdForce * vNorm.y;//0.0f;
+        // cap y high
+        if (Mathf.Abs(velY) > MaxYForce)
+            velY = MaxYForce;
 
         // only play anim if bounce was high enough
         if (Mathf.Abs(velX) > 0.0f || Mathf.Abs(velY) > 0.0f)
@@ -58,21 +60,10 @@ public class Trampoline_OneWay : MonoBehaviour
 	        m_BounceAnim.Play();
         }
 
-        // max force will mostly come into play when jumping is combined with bouncing
-//         if (velX > MaximumForce)
-//             velX = MaximumForce;
-//         if (velY > MaximumForce)
-//             velY = MaximumForce;
-
         // TODO:: make sure the player is coming from "in front" of the bounce pad
         // dot determines this
-
-//         Debug.Log("Trans Up (normal): " + vNorm.ToString());
-//         Debug.Log("Player Vel: " + m_Player.rigidbody.velocity.ToString());
-
         Force = new Vector3(velX, velY, 0.0f);
 
-//         Debug.Log("Force To Be Applied: " + Force.ToString());
         m_bPlayerInTrigger = true;
         m_Player.OnTrampEnter(this);
     }
@@ -82,6 +73,12 @@ public class Trampoline_OneWay : MonoBehaviour
         if (info.gameObject.name == "Player")
         {
             m_bPlayerInTrigger = true;
+            //Debug.Log("OnTriggerStay: " + name);
+            if (m_Player.rigidbody.velocity.y == 0.0f)
+            {
+                //Debug.Log("Vel == 0.0");
+                m_Player.OnTrampEnter(this);
+            }
         }
     }
     void OnTriggerExit(Collider info)
@@ -89,7 +86,7 @@ public class Trampoline_OneWay : MonoBehaviour
         if (info.gameObject.name == "Player")
         {
             m_bPlayerInTrigger = false;
-            //Debug.Log("No Longer colliding with tramp");
+            m_Player.OnTrampExit();
         }
     }
 

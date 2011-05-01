@@ -79,42 +79,38 @@ public class Trajectory : MonoBehaviour
     {
         GameObject board = GameObject.Find("Board");
         GameObject wedge = GameObject.Find("Wedge");
-        //GameObject ground= GameObject.Find("Ground");
-        
-        // find the point where the board will contact the ground
-
-        // 1. need height & radius
-        float h = wedge.collider.bounds.size.y;
-        float Rb = board.collider.bounds.size.x * 0.5f;
-        
-        // 2. find the angle between the current board position and where it will be
-        float theta = Mathf.Asin(h / Rb);
-
-        // 3. find the distance between the center.x & the point.x on the circle where the board/ground meet
-        //float x = Rb * Mathf.Cos(theta);
+        GameObject ground= GameObject.Find("Ground");
 
         // calculate distance of player from the center (hinge), this is the radius
-        float Rp = Mathf.Abs(m_Player.transform.position.x - wedge.transform.position.x);
+        float r = Mathf.Abs(m_Player.transform.position.x - wedge.transform.position.x);
 
         // using right triangle to determine angle between board start position & 
         //  when it contacts the ground:
         // tan A = a/b
         // theta = arctan(tan A)
 
-        // 1. calculate distance the player will travel (before separation from board)
-        // this is the Arc Length
-        float L = theta * Rp;
+        // get the distance from the board to the ground
+        float a = Mathf.Abs((board.transform.position.y - board.collider.bounds.size.y * 0.5f) - ground.collider.bounds.max.y);
 
-        // 2. calculate angular displacement
-        float ad = L / Rp;
+        // get the distance from far end of board to center (hinge)
+        float b = board.collider.bounds.size.x * 0.5f;
 
-        // 3. calculate the time at which separation will occur
-        float t = Mathf.Sqrt(L / (0.5f * m_fGravity));
+        // get the angle
+        float theta = Mathf.Atan(a / b);
+
+        // calculate distance the player will travel (before separation from board)
+        // this is known as Arc Length
+        float L = theta * r;
+
+        // calculate angular displacement
+        float ad = L / r;
+
+        // calculate the time at which separation will occur
+        float t = Mathf.Sqrt(a / (0.5f * m_fGravity));
         
-        // 4. calculate the angular velocity at time t
+        // calculate the angular velocity at time t
         float w = ad / t;
 
-        // 5. convert angular velocity to regular velocity
-        return Rp * w;
+        return r * w;
     }
 }

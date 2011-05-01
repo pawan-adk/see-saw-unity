@@ -14,6 +14,9 @@ public class RopeAlt : MonoBehaviour
     public float MaxGrabDistance;
     public float NextLinkThreshold = 0.25f;
     public float MoveDelay = 0.25f;
+    public float MinLetGoXVel = 5.0f;
+    public float MaxLetGoXVel = 15.0f;
+
     float m_fMoveTimer;
 
     Rigidbody[] m_lLinks;
@@ -86,14 +89,30 @@ public class RopeAlt : MonoBehaviour
             m_Player.rigidbody.isKinematic = true;
             m_Start = m_lLinks[m_nConnectedLinkIndex].position;
 
-            // get grabbing input
+            // let go of the rope???
             if (Input.GetButtonUp("Action Btn 1"))
             {
                 Destroy(m_Dummy);
                 m_bPlayerAttached = false;
                 m_eCurrClimbingStatus = eClimbingStatus.CS_NONE;
                 m_Player.rigidbody.isKinematic = false;
-                m_Player.rigidbody.velocity = m_lLinks[m_nConnectedLinkIndex].rigidbody.velocity;
+                Debug.Log("Let go, velocity before:" + m_Player.rigidbody.velocity.ToString());
+
+                m_Player.rigidbody.velocity = m_lLinks[m_nConnectedLinkIndex].rigidbody.velocity * 2.5f;
+
+                Vector3 v = m_Player.rigidbody.velocity;
+                // cap low
+                if (v.x < 0.0f && v.x > -MinLetGoXVel)
+                    m_Player.rigidbody.velocity = new Vector3(-MinLetGoXVel, v.y * 2.0f, 0.0f);
+                else if (v.x > 0.0f && v.x < MinLetGoXVel)
+                    m_Player.rigidbody.velocity = new Vector3(MinLetGoXVel, v.y * 2.0f, 0.0f);
+                // cap high
+                if (v.x < 0.0f && v.x < -MaxLetGoXVel)
+                    m_Player.rigidbody.velocity = new Vector3(-MaxLetGoXVel, v.y * 2.0f, 0.0f);
+                else if (v.x > 0.0f && v.x > MaxLetGoXVel)
+                    m_Player.rigidbody.velocity = new Vector3(MaxLetGoXVel, v.y * 2.0f, 0.0f);
+
+                Debug.Log("Let go, velocity after:" + m_Player.rigidbody.velocity.ToString());
             }
 
             // TODO:: need to determine if we want it to pause & require the player
@@ -138,6 +157,9 @@ public class RopeAlt : MonoBehaviour
                 {
                     m_eCurrClimbingStatus = eClimbingStatus.CS_NONE;
                     ++m_nConnectedLinkIndex;
+                    GameObject hand = m_Dummy.transform.FindChild("TestHand").gameObject;
+                    hand.rigidbody.velocity = Vector3.zero;
+                    hand.hingeJoint.connectedBody = m_lLinks[m_nConnectedLinkIndex];
                     Debug.Log("Climbing Up Done, index:" + m_nConnectedLinkIndex.ToString());
                     m_bMoveCompleted = true;
                 }
@@ -159,6 +181,9 @@ public class RopeAlt : MonoBehaviour
                 {
                     m_eCurrClimbingStatus = eClimbingStatus.CS_NONE;
                     --m_nConnectedLinkIndex;
+                    GameObject hand = m_Dummy.transform.FindChild("TestHand").gameObject;
+                    hand.rigidbody.velocity = Vector3.zero;
+                    hand.hingeJoint.connectedBody = m_lLinks[m_nConnectedLinkIndex];
                     Debug.Log("Climbing Down Done, index:" + m_nConnectedLinkIndex.ToString());
                     m_bMoveCompleted = true;
                 }

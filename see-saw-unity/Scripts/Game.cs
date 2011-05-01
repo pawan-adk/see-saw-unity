@@ -29,7 +29,7 @@ public class Game
         instance = this;
 
         //m_nNumMenus = 3;
-        m_nNumLevelsInWorld = 8;
+        m_nNumLevelsInWorld = 10;
         m_nNumWorlds = 1;
         m_nCurrWorld = 1;
         m_nCurrLevel = Application.loadedLevel;
@@ -37,7 +37,6 @@ public class Game
 
     public void Update()
     {
-        // TODO:: display current world/level on screen:
     }
 
     public void LateUpdate()
@@ -121,7 +120,8 @@ public class Game
     }
     public void OnGotoMainMenu()
     {
-        m_PlayerInfo.RevertToDefaults();
+        if (m_PlayerInfo != null)
+            m_PlayerInfo.RevertToDefaults();
         Application.LoadLevel("MainMenu");
     }
 
@@ -178,6 +178,11 @@ public class Game
     {
         get { return m_PlayerInfo; }
         set { m_PlayerInfo = value; }
+    }
+    public int NumWorlds
+    {
+        get { return m_nNumWorlds; }
+        set { m_nNumWorlds = value; }
     }
 
     public static Game Instance

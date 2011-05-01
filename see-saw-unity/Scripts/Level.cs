@@ -8,7 +8,7 @@ public class Level : MonoBehaviour
 {
     GUIStyle m_GUIStyle = new GUIStyle();
 
-    GameObject[] m_lCheckpoints;
+//    GameObject[] m_lCheckpoints;
     GameObject m_CurrCheckpoint;
 
     //GameObject Ground;
@@ -114,10 +114,9 @@ public class Level : MonoBehaviour
     void OnGUI()
     {
         if (Application.loadedLevel > 0 && Application.loadedLevel <= Game.Instance.NumLevelsInWorld)
-        {
-            GUI.Label(new Rect(10, 5, 100, 40), m_Game.PlayerInfo.Lives.ToString() + " Lives"/*, m_GUIStyle*/);
             GUI.Label(new Rect(70, 5, 200, 40), "World " + m_Game.CurrWorldNum.ToString() + ", Level " + m_Game.CurrLevelNum.ToString()/*, m_GUIStyle*/);
-        }
+        else if (Application.loadedLevelName == "PracticeLevel")
+            GUI.Label(new Rect(70, 5, 200, 40), "Practice"/*, m_GUIStyle*/);
     }
 
     public void OnGoalReached()
@@ -175,7 +174,7 @@ public class Level : MonoBehaviour
         m_PlayerCameraObject = GameObject.Find("PlayerCamera");
         m_PlayerCam = m_PlayerCameraObject.GetComponent<SmoothLookAtFollow>();
 
-        m_lCheckpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
+        //m_lCheckpoints = GameObject.FindGameObjectsWithTag("Checkpoint");
     }
     private void _Reset()
     {

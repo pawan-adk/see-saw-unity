@@ -20,7 +20,6 @@ public class Board : MonoBehaviour
 	
 	void Update () 
 	{
-
 	}
 
     public void OnReset()
