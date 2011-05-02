@@ -16,7 +16,9 @@ public class SmoothLookAtFollow : MonoBehaviour
 
     public float ZoomedInZPosOffset = 25.0f;
     public float ZoomedInYPosOffset = 10.0f;
+	public float ZoomedInXPosOffset = 10.0f;
     public float ZoomedInYLAOffset = 10.0f;
+	public float ZoomedInXLAOffset = 10.0f;
 
     public float ZoomedOutYPosOffset = 15.0f;
     public float ZoomedOutZDistMultiplier = -0.7759663f;
@@ -77,10 +79,11 @@ public class SmoothLookAtFollow : MonoBehaviour
     public void SetNewZoomedInVars()
     {
         Vector3 wedgePos = GameObject.Find("Wedge").GetComponent<Wedge>().transform.position;
-        m_vZoomedInPos = wedgePos;
+        m_vZoomedInPos = wedgePos + Vector3.right * ZoomedInXPosOffset;
         m_vZoomedInPos += Vector3.forward * -ZoomedInZPosOffset;
         m_vZoomedInPos += Vector3.up * ZoomedInYPosOffset;
         m_vZoomedInLA = wedgePos + Vector3.up * ZoomedInYLAOffset;
+		m_vZoomedInLA += Vector3.right * ZoomedInXLAOffset;
     }
     public void SetNewZoomedOutVars()
     {

@@ -49,8 +49,12 @@ public class RopeAlt : MonoBehaviour
 
     void Update()
     {
+#if UNITY_IPHONE
+		if (Game.Instance.MobileInput.BtnPressed(ControllerInput.BTN_A))
+#else
         if (Input.GetButtonDown("Action Btn 1"))
-        {
+#endif
+		{
             if (!m_bPlayerAttached)
             {
                 m_nConnectedLinkIndex = -1;
@@ -61,7 +65,7 @@ public class RopeAlt : MonoBehaviour
 
                 if (m_nConnectedLinkIndex > -1)
                 {
-                    Debug.Log("Link found:" + m_nConnectedLinkIndex.ToString());
+                    //Debug.Log("Link found:" + m_nConnectedLinkIndex.ToString());
 
                     m_bPlayerAttached = true;
 
@@ -90,13 +94,17 @@ public class RopeAlt : MonoBehaviour
             m_Start = m_lLinks[m_nConnectedLinkIndex].position;
 
             // let go of the rope???
+#if UNITY_IPHONE
+			if (Game.Instance.MobileInput.BtnReleased(ControllerInput.BTN_A))
+#else
             if (Input.GetButtonUp("Action Btn 1"))
-            {
+#endif
+			{
                 Destroy(m_Dummy);
                 m_bPlayerAttached = false;
                 m_eCurrClimbingStatus = eClimbingStatus.CS_NONE;
                 m_Player.rigidbody.isKinematic = false;
-                Debug.Log("Let go, velocity before:" + m_Player.rigidbody.velocity.ToString());
+                //Debug.Log("Let go, velocity before:" + m_Player.rigidbody.velocity.ToString());
 
                 m_Player.rigidbody.velocity = m_lLinks[m_nConnectedLinkIndex].rigidbody.velocity * 2.5f;
 
@@ -112,7 +120,7 @@ public class RopeAlt : MonoBehaviour
                 else if (v.x > 0.0f && v.x > MaxLetGoXVel)
                     m_Player.rigidbody.velocity = new Vector3(MaxLetGoXVel, v.y * 2.0f, 0.0f);
 
-                Debug.Log("Let go, velocity after:" + m_Player.rigidbody.velocity.ToString());
+                //Debug.Log("Let go, velocity after:" + m_Player.rigidbody.velocity.ToString());
             }
 
             // TODO:: need to determine if we want it to pause & require the player
@@ -126,20 +134,33 @@ public class RopeAlt : MonoBehaviour
                 _SetPlayerPosFromHand();
 
                 // make sure they can still go up/down first
+#if UNITY_IPHONE
+                if (m_fMoveTimer >= MoveDelay && 
+                    Game.Instance.MobileInput.BtnDown(ControllerInput.BTN_UP) && 
+                    m_nConnectedLinkIndex + 1 < m_lLinks.Length)
+				
+#else
                 if (m_fMoveTimer >= MoveDelay && 
                     Input.GetButton("Character Control Up") && 
                     m_nConnectedLinkIndex + 1 < m_lLinks.Length)
-                {
-                    Debug.Log("Moving up");
+#endif
+				{
+                    //Debug.Log("Moving up");
                     m_fMoveTimer = 0.0f;
                     m_bMoveCompleted = false;
                     m_eCurrClimbingStatus = eClimbingStatus.CS_UP;
                 }
+#if UNITY_IPHONE
+                else if (m_fMoveTimer >= MoveDelay && 
+                        Game.Instance.MobileInput.BtnDown(ControllerInput.BTN_DOWN) && 
+                        m_nConnectedLinkIndex - 1 > -1)				
+#else
                 else if (m_fMoveTimer >= MoveDelay && 
                         Input.GetButton("Character Control Down") && 
                         m_nConnectedLinkIndex - 1 > -1)
-                {
-                    Debug.Log("Moving down");
+#endif
+				{
+                    //Debug.Log("Moving down");
                     m_fMoveTimer = 0.0f;
                     m_bMoveCompleted = false;
                     m_eCurrClimbingStatus = eClimbingStatus.CS_DOWN;
@@ -151,7 +172,7 @@ public class RopeAlt : MonoBehaviour
 
                 Vector3 vDir = (m_lLinks[m_nConnectedLinkIndex + 1].position - m_Hand.transform.position);
                 float dist = vDir.magnitude;
-                Debug.Log("Dist:" + dist.ToString());
+                //Debug.Log("Dist:" + dist.ToString());
 
                 if (dist < NextLinkThreshold)
                 {
@@ -160,7 +181,7 @@ public class RopeAlt : MonoBehaviour
                     GameObject hand = m_Dummy.transform.FindChild("TestHand").gameObject;
                     hand.rigidbody.velocity = Vector3.zero;
                     hand.hingeJoint.connectedBody = m_lLinks[m_nConnectedLinkIndex];
-                    Debug.Log("Climbing Up Done, index:" + m_nConnectedLinkIndex.ToString());
+                    //Debug.Log("Climbing Up Done, index:" + m_nConnectedLinkIndex.ToString());
                     m_bMoveCompleted = true;
                 }
                 else
@@ -175,7 +196,7 @@ public class RopeAlt : MonoBehaviour
 
                 Vector3 vDir = (m_lLinks[m_nConnectedLinkIndex - 1].position - m_Hand.transform.position);
                 float dist = vDir.magnitude;
-                Debug.Log("Dist:" + dist.ToString());
+                //Debug.Log("Dist:" + dist.ToString());
 
                 if (dist < NextLinkThreshold)
                 {
@@ -184,7 +205,7 @@ public class RopeAlt : MonoBehaviour
                     GameObject hand = m_Dummy.transform.FindChild("TestHand").gameObject;
                     hand.rigidbody.velocity = Vector3.zero;
                     hand.hingeJoint.connectedBody = m_lLinks[m_nConnectedLinkIndex];
-                    Debug.Log("Climbing Down Done, index:" + m_nConnectedLinkIndex.ToString());
+                    //Debug.Log("Climbing Down Done, index:" + m_nConnectedLinkIndex.ToString());
                     m_bMoveCompleted = true;
                 }
                 else

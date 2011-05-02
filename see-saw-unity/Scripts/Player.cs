@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     // this is used so no reset occurs immediately after launch
     float m_fResetableTimer;    
 
-    Vector2 m_vDefaultForceCharControl = new Vector2(200, 200);
+    Vector2 m_vDefaultForceCharControl = new Vector2(350, 200);
 
     // when the player's velocity becomes lower than this
     // the seesaw is moved to that location if they have enough health
@@ -62,12 +62,6 @@ public class Player : MonoBehaviour
     {
         if (Game.Instance.LaunchStarted)
         {
-#if UNITY_IPHONE
-			if (Input.touchCount > 0)
-			{
-				
-			}
-#else
             //Debug.Log("Player Vel:" + rigidbody.velocity.ToString());
 // 	        if (Input.GetButton("Character Control Up"))
 // 	        {
@@ -79,15 +73,23 @@ public class Player : MonoBehaviour
 // 	            rigidbody.AddForce(m_vDefaultForceCharControl.x * 0.0f, -m_vDefaultForceCharControl.y, 0.0f);
 // 	        }
 // 	        else 
+#if UNITY_IPHONE
+			if (Game.Instance.MobileInput.BtnDown(ControllerInput.BTN_RIGHT))
+
+#else
             if (Input.GetButton("Character Control Right"))
+#endif
 	        {
 	            rigidbody.AddForce(m_vDefaultForceCharControl.x, m_vDefaultForceCharControl.y * 0.0f, 0.0f);
 	        }
+#if UNITY_IPHONE
+			else if (Game.Instance.MobileInput.BtnDown(ControllerInput.BTN_LEFT))
+#else
 	        else if (Input.GetButton("Character Control Left"))
-	        {
+#endif
+			{
 	            rigidbody.AddForce(-m_vDefaultForceCharControl.x, m_vDefaultForceCharControl.y * 0.0f, 0.0f);
             }
-#endif
 			
 //             if (m_fResetableTimer < 0.0f && !m_bHealthDecremented && !m_bDied &&
 //                 Mathf.Abs(rigidbody.velocity.x) < ResetVelocityThreshold.x && 
@@ -154,8 +156,12 @@ public class Player : MonoBehaviour
 
         if (m_fAddForceTimer > 0.0f)
             rigidbody.AddForce(AdditionalForceOnLaunch);
+#if UNITY_IPHONE
+		if (m_bBoostValid && Game.Instance.MobileInput.BtnPressed(ControllerInput.BTN_A))
+#else
         if (m_bBoostValid && Input.GetButtonDown("Action Btn 1"))
-            m_fBoostTimer = BoostDuration;
+#endif
+			m_fBoostTimer = BoostDuration;
         if (m_fBoostTimer > 0.0f)
             rigidbody.AddForce(Vector3.up * BoostForce);
     }

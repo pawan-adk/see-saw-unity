@@ -47,6 +47,8 @@ public class Level : MonoBehaviour
         _InitCommonObjects();
         m_PlayerCam.LateStart();
         m_PlayerCam.ToggleZoom();
+		
+		Game.Instance.MobileInput = GameObject.Find("MobileInputControls").GetComponent<ControllerInput>();
     }
 
     void Update()
@@ -89,11 +91,11 @@ public class Level : MonoBehaviour
     {
         if (LevelPreviewTime == 0.0f)
         {
-	        if (Input.GetButtonDown("Reset"))
-	        {
-	            _Reset();
-	        }
-	        else if (Input.GetButtonDown("Drop Weight"))
+#if UNITY_IPHONE
+			if (Game.Instance.MobileInput.BtnReleased(ControllerInput.BTN_A))
+#else
+	        if (Input.GetButtonDown("Drop Weight"))
+#endif
 	        {
 	            m_Game.WeightDropped = true;
                 if (m_SeeSawObject)
@@ -104,11 +106,26 @@ public class Level : MonoBehaviour
 //                 if (ZoomInOutBtn != null && ZoomInOutBtn.guiTexture.HitTest(Input.mousePosition))
 //                     m_PlayerCam.ToggleZoom();
 //             }
+#if UNITY_IPHONE
+			else if (Game.Instance.MobileInput.BtnReleased(ControllerInput.BTN_B))
+#else
             else if (Input.GetButtonDown("Zoom Toggle"))
+#endif
                 m_PlayerCam.ToggleZoom();
 	        
 	        m_Game.LateUpdate();
         }
+		if (Game.Instance.LaunchStarted)
+		{
+#if UNITY_IPHONE
+			if (Game.Instance.MobileInput.BtnReleased(ControllerInput.BTN_B))
+#else
+	        if (Input.GetButtonDown("Reset"))
+#endif
+			{
+	            _Reset();
+	        }			
+		}
     }
 
     void OnGUI()

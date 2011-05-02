@@ -6,7 +6,7 @@ using System.Collections;
 /// Acts as central access point for all classes
 /// </summary>
 public class Game
-{
+{	
     private static Game instance;
 
     bool m_bPreviewDone = false;
@@ -20,8 +20,18 @@ public class Game
 
     PlayerInfo m_PlayerInfo;
     Level m_CurrLevel;
+	
+#if UNITY_IPHONE
+	ControllerInput m_MobileInputController;
 
-    public Game()
+	public ControllerInput MobileInput 
+	{
+		get { return m_MobileInputController; }
+		set { m_MobileInputController = value; }
+	}
+#endif
+	
+	public Game()
     {
         Debug.Log("Game instance created (CTOR)");
         if (instance != null)
