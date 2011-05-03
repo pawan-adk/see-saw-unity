@@ -3,60 +3,53 @@ using System.Collections;
 
 public class SmoothLookAtFollow : MonoBehaviour
 {
-    public Transform LookAtTarget;
-
-    Vector3 m_vZoomedInPos;
+    public Transform LookAtTarget;	// e.g. the player
+	
+	Vector3 m_vCurrLA;
+	Vector3 m_vTargetLA;
+	
+//    Vector3 m_vZoomedInPos;
     Vector3 m_vZoomedOutPos;
-    Vector3 m_vZoomedInLA;
-
+	
+	public Vector3 ZoomedInPosOS = new Vector3(10.0f, 10.0f, 25.0f);
+	public Vector3 ZoomedInLookAtOS = new Vector3(10.0f, 10.0f, 0.0f);
+	
+    public float ZoomedOutZDistMultiplier = -0.7759663f;
+	
     public float LookAtDampingReset = 1.0f;
     public float LookAtDampingPlay = 8.0f;
     public float FollowDamping = 6.0f;
     public float MoveCamSpeed = 5.0f;
 
-    public float ZoomedInZPosOffset = 25.0f;
-    public float ZoomedInYPosOffset = 10.0f;
-	public float ZoomedInXPosOffset = 10.0f;
-    public float ZoomedInYLAOffset = 10.0f;
-	public float ZoomedInXLAOffset = 10.0f;
-
-    public float ZoomedOutYPosOffset = 15.0f;
-    public float ZoomedOutZDistMultiplier = -0.7759663f;
-    //public float ZoomedOutYLAOffset = 10.0f;
-
     bool m_bZoomedIn = true;
-    bool m_bResetting = false;
 
     void LateUpdate()
     {
-        if (Game.Instance.WeightDropped)
-        {
-            // Look at and dampen the rotation
-            Quaternion rotation = Quaternion.LookRotation(LookAtTarget.position - transform.position);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * LookAtDampingPlay);
-
-            transform.position = Vector3.Lerp(transform.position, 
-                                            new Vector3(LookAtTarget.position.x,
-                                                        LookAtTarget.position.y, 
-                                                        transform.position.z), 
-                                                Time.deltaTime * FollowDamping);
-        }
-        else
+//        if (Game.Instance.WeightDropped)
+//        {
+//            // Look at and dampen the rotation
+//            Quaternion rotation = Quaternion.LookRotation((LookAtTarget.position + ZoomedInLookAtOS) - transform.position);
+//            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * LookAtDampingPlay);
+//
+//            transform.position = Vector3.Lerp(transform.position, 
+//                                            new Vector3(LookAtTarget.position.x + ZoomedInPosOS.x,
+//                                                        LookAtTarget.position.y + ZoomedInPosOS.y, 
+//                                                        transform.position.z), 
+//                                                Time.deltaTime * FollowDamping);
+//        }
+//        else
         {
             if (m_bZoomedIn)    // zoomed in or currently zooming in
             {
-                // Look at and dampen the rotation
-                if (m_bResetting)
-                {
-                    Quaternion rotation = Quaternion.LookRotation(m_vZoomedInLA - transform.position);
-                    transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * LookAtDampingReset);
-                }
-                transform.position = Vector3.Lerp(transform.position, m_vZoomedInPos, Time.deltaTime * MoveCamSpeed);
+                transform.position = Vector3.Lerp(transform.position, LookAtTarget.position + ZoomedInPosOS, Time.deltaTime * MoveCamSpeed);
+				m_vCurrLA = Vector3.Lerp(m_vCurrLA, LookAtTarget.position + ZoomedInLookAtOS, Time.deltaTime * MoveCamSpeed);
             } 
             else   // zoomed out or currently zooming out
             {
-                transform.position = Vector3.Lerp(transform.position, m_vZoomedOutPos, Time.deltaTime * MoveCamSpeed);
+                transform.position = Vector3.Lerp(transform.position, m_vZoomedOutPos, Time.deltaTime * MoveCamSpeed);	
+				m_vCurrLA = Vector3.Lerp(m_vCurrLA, m_vTargetLA, Time.deltaTime * MoveCamSpeed);		
             }
+			transform.LookAt(m_vCurrLA);
         }
     }
 
@@ -68,23 +61,19 @@ public class SmoothLookAtFollow : MonoBehaviour
             rigidbody.freezeRotation = true;
 
         // setup the 2 modes' transforms:
-        SetNewZoomedInVars();
+        //SetNewZoomedInVars();
         SetNewZoomedOutVars();
 
         // start zoomed in?
-        transform.position = m_vZoomedInPos;
-        transform.LookAt(m_vZoomedInLA);
+        transform.position = LookAtTarget.position + ZoomedInLookAtOS;
     }
 
-    public void SetNewZoomedInVars()
-    {
-        Vector3 wedgePos = GameObject.Find("Wedge").GetComponent<Wedge>().transform.position;
-        m_vZoomedInPos = wedgePos + Vector3.right * ZoomedInXPosOffset;
-        m_vZoomedInPos += Vector3.forward * -ZoomedInZPosOffset;
-        m_vZoomedInPos += Vector3.up * ZoomedInYPosOffset;
-        m_vZoomedInLA = wedgePos + Vector3.up * ZoomedInYLAOffset;
-		m_vZoomedInLA += Vector3.right * ZoomedInXLAOffset;
-    }
+//    public void SetNewZoomedInVars()
+//    {
+//        Vector3 wedgePos = GameObject.Find("Wedge").GetComponent<Wedge>().transform.position;
+//        m_vZoomedInPos = wedgePos + ZoomedInPosOS;
+//    }
+	
     public void SetNewZoomedOutVars()
     {
         // calculate how far back we need to be to have the see-saw
@@ -93,18 +82,25 @@ public class SmoothLookAtFollow : MonoBehaviour
         float zOffset = lvl.GetDistBoardToTrigger() * ZoomedOutZDistMultiplier;
 
         m_vZoomedOutPos = lvl.GetLevelCenterPt() + Vector3.forward * zOffset;
-        m_vZoomedOutPos = new Vector3(m_vZoomedOutPos.x, m_vZoomedInPos.y, m_vZoomedOutPos.z);
+        m_vZoomedOutPos = new Vector3(m_vZoomedOutPos.x, LookAtTarget.position.y, m_vZoomedOutPos.z);
+		m_vTargetLA = m_vCurrLA = lvl.GetLevelCenterPt();
     }
 
     public void ToggleZoom()
     {
         m_bZoomedIn = !m_bZoomedIn;
-        m_bResetting = false;
+		
+		if (!m_bZoomedIn)
+			m_vTargetLA = GameObject.Find("Level").GetComponent<Level>().GetLevelCenterPt();
+//		else
+//			m_vTargetLA = LookAtTarget.position + ZoomedInLookAtOS;
     }
     
     public void OnReset()
     {
-        m_bResetting = true;
-        m_bZoomedIn = true;
+		if (!m_bZoomedIn)
+			m_vTargetLA = GameObject.Find("Level").GetComponent<Level>().GetLevelCenterPt();
+//		else
+//			m_vTargetLA = LookAtTarget.position + ZoomedInLookAtOS;
     }
 }

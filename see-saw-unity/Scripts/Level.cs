@@ -89,32 +89,6 @@ public class Level : MonoBehaviour
 
     void LateUpdate()
     {
-        if (LevelPreviewTime == 0.0f)
-        {
-#if UNITY_IPHONE
-			if (Game.Instance.MobileInput.BtnReleased(ControllerInput.BTN_A))
-#else
-	        if (Input.GetButtonDown("Drop Weight"))
-#endif
-	        {
-	            m_Game.WeightDropped = true;
-                if (m_SeeSawObject)
-	                m_SeeSawObject.GetComponent<SeeSaw>().OnWeightDropped();
-	        }
-//             else if (Input.GetMouseButtonUp(0))
-//             {
-//                 if (ZoomInOutBtn != null && ZoomInOutBtn.guiTexture.HitTest(Input.mousePosition))
-//                     m_PlayerCam.ToggleZoom();
-//             }
-#if UNITY_IPHONE
-			else if (Game.Instance.MobileInput.BtnReleased(ControllerInput.BTN_B))
-#else
-            else if (Input.GetButtonDown("Zoom Toggle"))
-#endif
-                m_PlayerCam.ToggleZoom();
-	        
-	        m_Game.LateUpdate();
-        }
 		if (Game.Instance.LaunchStarted)
 		{
 #if UNITY_IPHONE
@@ -126,6 +100,27 @@ public class Level : MonoBehaviour
 	            _Reset();
 	        }			
 		}
+        else if (LevelPreviewTime == 0.0f)
+        {
+#if UNITY_IPHONE
+			if (Game.Instance.MobileInput.BtnReleased(ControllerInput.BTN_A))
+#else
+	        if (Input.GetButtonDown("Drop Weight"))
+#endif
+	        {
+	            m_Game.WeightDropped = true;
+                if (m_SeeSawObject)
+	                m_SeeSawObject.GetComponent<SeeSaw>().OnWeightDropped();
+	        }
+#if UNITY_IPHONE
+			else if (Game.Instance.MobileInput.BtnReleased(ControllerInput.BTN_B))
+#else
+            else if (Input.GetButtonDown("Zoom Toggle"))
+#endif
+                m_PlayerCam.ToggleZoom();
+	        
+	        m_Game.LateUpdate();
+        }
     }
 
     void OnGUI()
@@ -220,7 +215,6 @@ public class Level : MonoBehaviour
                 Debug.Log("currCP == null");
             m_SeeSawObject.GetComponent<SeeSaw>().OnResetToNewCheckpoint(m_CurrCheckpoint.GetComponent<Checkpoint>().SeeSawPos);
             m_PlayerObject.GetComponent<Player>().OnReset();
-            m_PlayerCam.SetNewZoomedInVars();
             m_PlayerCam.SetNewZoomedOutVars();
             m_PlayerCam.OnReset();
             m_CurrCheckpoint.GetComponent<Checkpoint>().DestroyDummySeeSaw();

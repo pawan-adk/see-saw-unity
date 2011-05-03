@@ -6,8 +6,11 @@ public class MenuOption : MonoBehaviour
     public GameObject Bolt;
 
     public Vector3 ClickScale = new Vector3(0.1f, 0.05f, 0.025f);
-
+	
+#if !UNITY_IPHONE
     Color m_OriginalBtnColor;
+#endif
+	
     public Color ButtonHoverColor = Color.white;
     public Color TextHoverColor = Color.red;
 
@@ -16,23 +19,26 @@ public class MenuOption : MonoBehaviour
 
     public bool DoClickScale = true;
     public bool DoMoveOnMouseEnter = false;
-
+	
+#if !UNITY_IPHONE
     float m_fBtnHoverZ, m_fBtnNormalZ;
     float m_fBoltHoverZ, m_fBoltNormalZ;
-
+#endif
+	
     void Start()
     {
+#if !UNITY_IPHONE
         m_OriginalBtnColor = renderer.material.color;
-        transform.Find("Text").gameObject.renderer.material.color = ButtonHoverColor;
-
         m_fBtnHoverZ = transform.position.z + HoverZ;
         m_fBtnNormalZ= transform.position.z;
-
         if (Bolt != null)
         {
 	        m_fBoltHoverZ = Bolt.transform.position.z + HoverZ;
 	        m_fBoltNormalZ= Bolt.transform.position.z;
         }
+#endif
+		
+		transform.Find("Text").gameObject.renderer.material.color = ButtonHoverColor;
     }
 
     void Update()
@@ -44,7 +50,12 @@ public class MenuOption : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.GetTouch(0).position.x, Input.GetTouch(0).position.y));
             if (collider.bounds.IntersectRay(ray))
-            {
+            {				
+		        if (DoClickScale)
+		            renderer.transform.localScale += ClickScale;
+		        renderer.material.color = ButtonHoverColor;		
+		        transform.Find("Text").gameObject.renderer.material.color = TextHoverColor;
+				
                 if (name == "Btn_Quit")
                 {
                     Application.Quit();

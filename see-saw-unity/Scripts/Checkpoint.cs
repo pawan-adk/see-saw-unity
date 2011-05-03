@@ -25,6 +25,7 @@ public class Checkpoint : MonoBehaviour
     {
         if (_info.gameObject.name == "Player" && !m_bReached)
         {
+			_info.gameObject.rigidbody.Sleep();
             m_bReached = true;
             m_Game.CurrLevel.OnCheckpointReached(gameObject);
         }
