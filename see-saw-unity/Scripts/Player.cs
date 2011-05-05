@@ -80,7 +80,10 @@ public class Player : MonoBehaviour
             if (Input.GetButton("Character Control Right"))
 #endif
 	        {
-	            rigidbody.AddForce(m_vDefaultForceCharControl.x, m_vDefaultForceCharControl.y * 0.0f, 0.0f);
+	            rigidbody.AddForce(m_vDefaultForceCharControl.x, 0.0f, 0.0f);
+				// turn to facing right
+				Quaternion rot = Quaternion.LookRotation(Vector3.right);
+				transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime);
 	        }
 #if UNITY_IPHONE
 			else if (Game.Instance.MobileInput.BtnDown(ControllerInput.BTN_LEFT))
@@ -88,7 +91,10 @@ public class Player : MonoBehaviour
 	        else if (Input.GetButton("Character Control Left"))
 #endif
 			{
-	            rigidbody.AddForce(-m_vDefaultForceCharControl.x, m_vDefaultForceCharControl.y * 0.0f, 0.0f);
+	            rigidbody.AddForce(-m_vDefaultForceCharControl.x, 0.0f, 0.0f);
+				// turn to facing left
+				Quaternion rot = Quaternion.LookRotation(-Vector3.right);
+				transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime);
             }
 			
 //             if (m_fResetableTimer < 0.0f && !m_bHealthDecremented && !m_bDied &&
