@@ -33,7 +33,7 @@ public class Weight : MonoBehaviour
         if (!Game.Instance.WeightDropped && Game.Instance.PreviewDone)
         {
 #if UNITY_IPHONE
-			if (Game.Instance.MobileInput.BtnDown(ControllerInput.BTN_UP) && m_fCurrMoveDist < MaxMoveDist)
+			if (Game.Instance.ControllerInput.BtnDown(ControllerInput.BTN_UP) && m_fCurrMoveDist < MaxMoveDist)
 #else
             if (Input.GetButton("Move Weight Up") && m_fCurrMoveDist < MaxMoveDist)
 #endif
@@ -42,7 +42,7 @@ public class Weight : MonoBehaviour
                 transform.position += Vector3.up * MoveSpeed * Time.deltaTime;
             }
 #if UNITY_IPHONE
-			else if (Game.Instance.MobileInput.BtnDown(ControllerInput.BTN_DOWN) && m_fCurrMoveDist > -MaxMoveDist)
+			else if (Game.Instance.ControllerInput.BtnDown(ControllerInput.BTN_DOWN) && m_fCurrMoveDist > -MaxMoveDist)
 #else
             else if (Input.GetButton("Move Weight Down") && m_fCurrMoveDist > -MaxMoveDist)
 #endif

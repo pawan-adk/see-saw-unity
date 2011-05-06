@@ -21,10 +21,19 @@ public class Game
     PlayerInfo m_PlayerInfo;
     Level m_CurrLevel;
 	
+	Options m_Options;
+	
 #if UNITY_IPHONE
 	ControllerInput m_MobileInputController;
-
-	public ControllerInput MobileInput 
+	AccelerometerInput m_AccelInput;
+	
+	public AccelerometerInput AccelInput
+	{
+		get { return m_AccelInput; }
+		set { m_AccelInput = value; }
+	}
+	
+	public ControllerInput ControllerInput 
 	{
 		get { return m_MobileInputController; }
 		set { m_MobileInputController = value; }
@@ -38,7 +47,7 @@ public class Game
             return;
         instance = this;
 
-        //m_nNumMenus = 3;
+		m_Options = new Options();
         m_nNumLevelsInWorld = 10;
         m_nNumWorlds = 1;
         m_nCurrWorld = 1;
@@ -194,6 +203,10 @@ public class Game
         get { return m_nNumWorlds; }
         set { m_nNumWorlds = value; }
     }
+	public Options Options
+	{
+		get { return m_Options; }	
+	}
 
     public static Game Instance
     {

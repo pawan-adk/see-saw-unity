@@ -42,10 +42,13 @@ public class LevelSelect : MonoBehaviour
             if (m_fDelayTimer <= 0.0f)
                 Game.Instance.StartGame(lvl, world);
         }
-
+#if UNITY_IPHONE
+		
+#else
         if (Input.GetButtonUp("Escape"))
             Game.Instance.OnGotoMainMenu();
-
+#endif
+		
 #region SCROLLING
 // scroll right
 //         if (Input.mousePosition.x > Screen.width - MouseScrollArea && m_Camera.transform.position.x < RightXMax)

@@ -50,7 +50,7 @@ public class RopeAlt : MonoBehaviour
     void Update()
     {
 #if UNITY_IPHONE
-		if (Game.Instance.MobileInput.BtnPressed(ControllerInput.BTN_A))
+		if (Game.Instance.ControllerInput.BtnPressed(ControllerInput.BTN_A))
 #else
         if (Input.GetButtonDown("Action Btn 1"))
 #endif
@@ -95,7 +95,7 @@ public class RopeAlt : MonoBehaviour
 
             // let go of the rope???
 #if UNITY_IPHONE
-			if (Game.Instance.MobileInput.BtnReleased(ControllerInput.BTN_A))
+			if (Game.Instance.ControllerInput.BtnReleased(ControllerInput.BTN_A))
 #else
             if (Input.GetButtonUp("Action Btn 1"))
 #endif
@@ -136,7 +136,7 @@ public class RopeAlt : MonoBehaviour
                 // make sure they can still go up/down first
 #if UNITY_IPHONE
                 if (m_fMoveTimer >= MoveDelay && 
-                    Game.Instance.MobileInput.BtnDown(ControllerInput.BTN_UP) && 
+                    Game.Instance.ControllerInput.BtnDown(ControllerInput.BTN_UP) && 
                     m_nConnectedLinkIndex + 1 < m_lLinks.Length)
 				
 #else
@@ -152,7 +152,7 @@ public class RopeAlt : MonoBehaviour
                 }
 #if UNITY_IPHONE
                 else if (m_fMoveTimer >= MoveDelay && 
-                        Game.Instance.MobileInput.BtnDown(ControllerInput.BTN_DOWN) && 
+                        Game.Instance.ControllerInput.BtnDown(ControllerInput.BTN_DOWN) && 
                         m_nConnectedLinkIndex - 1 > -1)				
 #else
                 else if (m_fMoveTimer >= MoveDelay && 

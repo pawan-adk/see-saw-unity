@@ -70,6 +70,7 @@ public class MenuOption : MonoBehaviour
                 }
                 else if (name == "Btn_Options")
                 {
+					Application.LoadLevel("OptionsMenu");
                 }
                 else if (name == "Btn_Back")
                 {
@@ -149,6 +150,7 @@ public class MenuOption : MonoBehaviour
         }
         else if (name == "Btn_Options")
         {
+			Application.LoadLevel("OptionsMenu");
         }
         else if (name == "Btn_Back")
         {

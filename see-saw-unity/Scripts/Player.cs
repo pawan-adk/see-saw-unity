@@ -74,28 +74,53 @@ public class Player : MonoBehaviour
 // 	        }
 // 	        else 
 #if UNITY_IPHONE
-			if (Game.Instance.MobileInput.BtnDown(ControllerInput.BTN_RIGHT))
+			// use accelerometer
+			if (!Game.Instance.Options.IsOptionActive(Options.eOptions.OPT_USE_ARROWS))
+			{
+				if (Game.Instance.AccelInput.HasValidXMovement())
+				{
+					// move left/right depending on accelerometer x movement
+					if (Game.Instance.AccelInput.XMovement > 0.0f)
+					{
+			            rigidbody.AddForce(m_vDefaultForceCharControl.x, 0.0f, 0.0f);
+						// turn to facing right
+						Quaternion rot = Quaternion.LookRotation(Vector3.right);
+						transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime);
+					}
+					else
+					{
+			            rigidbody.AddForce(-m_vDefaultForceCharControl.x, 0.0f, 0.0f);
+						// turn to facing left
+						Quaternion rot = Quaternion.LookRotation(-Vector3.right);
+						transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime);						
+					}
+				}
+			}
+			// use buttons	 
+			else
+			{			
+				if (Game.Instance.ControllerInput.BtnDown(ControllerInput.BTN_RIGHT))
 
 #else
             if (Input.GetButton("Character Control Right"))
 #endif
-	        {
-	            rigidbody.AddForce(m_vDefaultForceCharControl.x, 0.0f, 0.0f);
-				// turn to facing right
-				Quaternion rot = Quaternion.LookRotation(Vector3.right);
-				transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime);
-	        }
+		        {
+		            rigidbody.AddForce(m_vDefaultForceCharControl.x, 0.0f, 0.0f);
+					// turn to facing right
+					Quaternion rot = Quaternion.LookRotation(Vector3.right);
+					transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime);
+		        }
 #if UNITY_IPHONE
-			else if (Game.Instance.MobileInput.BtnDown(ControllerInput.BTN_LEFT))
+			else if (Game.Instance.ControllerInput.BtnDown(ControllerInput.BTN_LEFT))
 #else
-	        else if (Input.GetButton("Character Control Left"))
+	        	else if (Input.GetButton("Character Control Left"))
 #endif
-			{
-	            rigidbody.AddForce(-m_vDefaultForceCharControl.x, 0.0f, 0.0f);
-				// turn to facing left
-				Quaternion rot = Quaternion.LookRotation(-Vector3.right);
-				transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime);
-            }
+				{
+		            rigidbody.AddForce(-m_vDefaultForceCharControl.x, 0.0f, 0.0f);
+					// turn to facing left
+					Quaternion rot = Quaternion.LookRotation(-Vector3.right);
+					transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime);
+	            }
 			
 //             if (m_fResetableTimer < 0.0f && !m_bHealthDecremented && !m_bDied &&
 //                 Mathf.Abs(rigidbody.velocity.x) < ResetVelocityThreshold.x && 
@@ -114,6 +139,7 @@ public class Player : MonoBehaviour
 //                     Game.Instance.OnCharacterDied();
 //                 }
 //             }
+			}
             m_fResetableTimer -= Time.deltaTime;
             m_fAddForceTimer -= Time.deltaTime;
             m_fBoostTimer -= Time.deltaTime;
@@ -163,7 +189,7 @@ public class Player : MonoBehaviour
         if (m_fAddForceTimer > 0.0f)
             rigidbody.AddForce(AdditionalForceOnLaunch);
 #if UNITY_IPHONE
-		if (m_bBoostValid && Game.Instance.MobileInput.BtnPressed(ControllerInput.BTN_A))
+		if (m_bBoostValid && Game.Instance.ControllerInput.BtnPressed(ControllerInput.BTN_A))
 #else
         if (m_bBoostValid && Input.GetButtonDown("Action Btn 1"))
 #endif

@@ -16,6 +16,11 @@ public class Utilities
 		_var &= ~(1 << _bit);	
 	}
 	
+	public void BitToggle(ref int _var, int _bit)
+	{
+		_var ^= (1 << _bit);	
+	}
+	
 	public bool BitTest(int _var, int _bit)
 	{
 		return (_var & (1 << _bit)) != 0;	

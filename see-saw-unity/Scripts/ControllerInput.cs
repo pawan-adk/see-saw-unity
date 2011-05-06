@@ -4,36 +4,31 @@ using System.Collections;
 
 public class ControllerInput : MonoBehaviour
 {		
-	public const int BTN_LEFT = 0;
-	public const int BTN_RIGHT= 1;
-	public const int BTN_UP 	= 2;
-	public const int BTN_DOWN	= 3;
-	public const int BTN_A	= 4;
-	public const int BTN_B	= 5;
+	public const int BTN_A	= 0;
+	public const int BTN_B	= 1;
+	public const int BTN_LEFT = 2;
+	public const int BTN_RIGHT= 3;
+	public const int BTN_UP 	= 4;
+	public const int BTN_DOWN	= 5;
 	
-	public const int NUM_BTNS  = 6;
+	public int NUM_BTNS  = 6;
 	
-	bool[] m_arrPrevTouches = new bool[NUM_BTNS];
+	bool[] m_arrPrevTouches;
 	
 	int m_nDownFlags;
 	int m_nEnterFlags;
 	int m_nReleasedFlags;
 		
-	GUITexture[] m_arrBtns = new GUITexture[NUM_BTNS];
+	GUITexture[] m_arrBtns;
 	Color m_clrArrowOrig;
 	public Color m_clrHitClr;
 	
 	
 	void Start ()
 	{		
-		m_arrBtns[BTN_LEFT] = transform.Find("LeftArrow").guiTexture;
-		m_arrBtns[BTN_RIGHT]= transform.Find("RightArrow").guiTexture;
-		m_arrBtns[BTN_UP] 	= transform.Find("UpArrow").guiTexture;
-		m_arrBtns[BTN_DOWN] = transform.Find("DownArrow").guiTexture;
-		m_arrBtns[BTN_A]	= transform.Find("A_Btn").guiTexture;
-		m_arrBtns[BTN_B]	= transform.Find("B_Btn").guiTexture;
-				
-		m_clrArrowOrig = m_arrBtns[BTN_LEFT].color;
+		SetUsedButtons();
+		
+		m_clrArrowOrig = m_arrBtns[0].color;
 		m_nDownFlags = m_nEnterFlags = m_nReleasedFlags = 0;
 	}
 
@@ -43,12 +38,14 @@ public class ControllerInput : MonoBehaviour
 		// turn off any previously ended flags
 		m_nReleasedFlags = 0;
 		
-		m_arrPrevTouches[0] = m_arrPrevTouches[1] = m_arrPrevTouches[2] = m_arrPrevTouches[3] = m_arrPrevTouches[4] = m_arrPrevTouches[5] = false;
+		int i = 0;
+		for (; i < NUM_BTNS; ++i)
+			m_arrPrevTouches[i] = false;
 		
 		// go through all the buttons
 		// if any touches hit a button on began, stationary, or moved, color it & set its flag
 		// otherwise, if the previous touch did not hit the current button, the current button gets reset
-		int i = 0;
+		i = 0;
 		foreach (GUITexture btn in m_arrBtns)
 		{
 			foreach (Touch touch in Input.touches)
@@ -93,6 +90,46 @@ public class ControllerInput : MonoBehaviour
 			}			
 			++i;
 		}
+	}
+	
+	public void SetUsedButtons()
+	{
+		// use all buttons
+		if (Game.Instance.Options.IsOptionActive(Options.eOptions.OPT_USE_ARROWS))
+		{
+			Debug.Log("Using arrow buttons");
+			
+			NUM_BTNS = 6;
+			
+			m_arrBtns = new GUITexture[NUM_BTNS];
+			m_arrPrevTouches = new bool[NUM_BTNS];
+			
+			m_arrBtns[BTN_LEFT] = transform.Find("LeftArrow").guiTexture;
+			m_arrBtns[BTN_RIGHT]= transform.Find("RightArrow").guiTexture;
+			m_arrBtns[BTN_UP] 	= transform.Find("UpArrow").guiTexture;
+			m_arrBtns[BTN_DOWN] = transform.Find("DownArrow").guiTexture;			
+			m_arrBtns[BTN_A]	= transform.Find("A_Btn").guiTexture;
+			m_arrBtns[BTN_B]	= transform.Find("B_Btn").guiTexture;
+		}
+		// just use A & B buttons
+		else
+		{	
+			Debug.Log("Using only A & B buttons");
+			
+			// remove the arrows, since they're not going to be used
+			Destroy(transform.Find("LeftArrow").guiTexture);
+			Destroy(transform.Find("RightArrow").guiTexture);
+			Destroy(transform.Find("UpArrow").guiTexture);
+			Destroy(transform.Find("DownArrow").guiTexture);		
+			
+			NUM_BTNS = 2;
+			
+			m_arrBtns = new GUITexture[NUM_BTNS];
+			m_arrPrevTouches = new bool[NUM_BTNS];
+			
+			m_arrBtns[0]	= transform.Find("A_Btn").guiTexture;
+			m_arrBtns[1]	= transform.Find("B_Btn").guiTexture;
+		}	
 	}
 	
 	public bool BtnDown(int _btn)

@@ -1,9 +1,8 @@
-﻿using UnityEngine;
+﻿#if UNITY_IPHONE
+using UnityEngine;
 using System.Collections;
 
-#if UNITY_IPHONE
-
-public class ControllerInput : MonoBehaviour
+public class TouchInput : MonoBehaviour
 {	
     void Start()
     {
