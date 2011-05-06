@@ -4,6 +4,9 @@ using System.Collections;
 
 public class ControllerInput : MonoBehaviour
 {		
+    bool    m_bButtonTouched;
+	bool[]  m_arrPrevTouches;
+
 	public const int BTN_A	= 0;
 	public const int BTN_B	= 1;
 	public const int BTN_LEFT = 2;
@@ -13,7 +16,6 @@ public class ControllerInput : MonoBehaviour
 	
 	public int NUM_BTNS  = 6;
 	
-	bool[] m_arrPrevTouches;
 	
 	int m_nDownFlags;
 	int m_nEnterFlags;
@@ -37,7 +39,7 @@ public class ControllerInput : MonoBehaviour
 	{			
 		// turn off any previously ended flags
 		m_nReleasedFlags = 0;
-		
+		m_bButtonTouched = false;
 		int i = 0;
 		for (; i < NUM_BTNS; ++i)
 			m_arrPrevTouches[i] = false;
@@ -53,7 +55,7 @@ public class ControllerInput : MonoBehaviour
 				Vector3 pos = touch.position;
 				if (btn.HitTest(pos))
 				{
-					m_arrPrevTouches[i] = true;
+					m_arrPrevTouches[i] = m_bButtonTouched = true;
 					btn.color = m_clrHitClr;
 					
 					if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
@@ -144,6 +146,11 @@ public class ControllerInput : MonoBehaviour
 	{
 		return Utilities.Instance.BitTest(m_nReleasedFlags, _btn);	
 	}	
+
+	public bool ButtonTouched
+	{
+		get { return m_bButtonTouched; }
+	}
 }
 
 #else
