@@ -13,6 +13,8 @@ public class SmoothLookAtFollow : MonoBehaviour
 	public Vector3 ZoomedInPosOS = new Vector3(10.0f, 10.0f, 25.0f);
 	public Vector3 ZoomedInLookAtOS = new Vector3(0.0f, 10.0f, 0.0f);
 	
+    public float MinZoomedZ = -15.0f;
+    public float MaxZoomedZ = -40.0f;
 	public float ZoomedOutYOS = 5.0f;
     public float ZoomedOutZDistMultiplier = -0.7759663f;	
     public float FollowDamping = 6.0f;
@@ -25,15 +27,28 @@ public class SmoothLookAtFollow : MonoBehaviour
 
     void LateUpdate()
     {
+#if UNITY_IPHONE
+        // do we have two touches? zoom in/out if we haven't started the launch yet
+        if (!Game.Instance.LaunchStarted && Game.Instance.MI.TI.CurrTwoTouchOffset != 0.0f)
+        {
+            float newZ = ZoomedInPosOS.z - Game.Instance.MI.TI.CurrTwoTouchOffset * 0.1f;
+			
+			//Debug.Log("New Z:" + newZ.ToString());
+			
+            if (newZ > MinZoomedZ)
+                ZoomedInPosOS = new Vector3(ZoomedInPosOS.x, ZoomedInPosOS.y, MinZoomedZ);
+            else if (newZ < MaxZoomedZ)
+                ZoomedInPosOS = new Vector3(ZoomedInPosOS.x, ZoomedInPosOS.y, MaxZoomedZ);
+            else
+                ZoomedInPosOS = new Vector3(ZoomedInPosOS.x, ZoomedInPosOS.y, newZ);
+        }
+#endif
+
         if (m_bZoomedIn)    // zoomed in or currently zooming in
         {
 			// determine the influence from the character's velocity			
 			float velInfluence = m_Player.rigidbody.velocity.x * VelocityInfluenceDamper;
-			
-//			float dir = 1.0f;
-//			if (m_Player.transform.forward.x < 0.0f)
-//				dir = -1.0f;
-			
+						
 			// clamp												
 			if (velInfluence < -MaxTotalXDist)
 				velInfluence = -MaxTotalXDist;
