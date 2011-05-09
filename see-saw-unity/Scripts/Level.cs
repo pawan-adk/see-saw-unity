@@ -48,9 +48,13 @@ public class Level : MonoBehaviour
         m_PlayerCam.LateStart();
         m_PlayerCam.ToggleZoom();
 		
-		Game.Instance.ControllerInput = GameObject.Find("MobileInputControls").GetComponent<ControllerInput>();
+#if UNITY_IPHONE
+		Game.Instance.MI = GameObject.Find("MobileInputControls").GetComponent<MobileInput>();
 		Game.Instance.AccelInput  = GameObject.Find("MobileInputControls").GetComponent<AccelerometerInput>();
-    }
+#else
+		DestroyImmediate(GameObject.Find("MobileInputControls"));
+#endif
+	}
 
     void Update()
     {
@@ -93,7 +97,7 @@ public class Level : MonoBehaviour
 		if (Game.Instance.LaunchStarted)
 		{
 #if UNITY_IPHONE
-			if (Game.Instance.ControllerInput.BtnReleased(ControllerInput.BTN_B))
+			if (Game.Instance.MI.BtnReleased(MobileInput.BTN_B))
 #else
 	        if (Input.GetButtonDown("Reset"))
 #endif
@@ -104,7 +108,7 @@ public class Level : MonoBehaviour
         else if (LevelPreviewTime == 0.0f)
         {
 #if UNITY_IPHONE
-			if (Game.Instance.ControllerInput.BtnReleased(ControllerInput.BTN_A))
+			if (Game.Instance.MI.BtnReleased(MobileInput.BTN_A))
 #else
 	        if (Input.GetButtonDown("Drop Weight"))
 #endif
@@ -114,7 +118,7 @@ public class Level : MonoBehaviour
 	                m_SeeSawObject.GetComponent<SeeSaw>().OnWeightDropped();
 	        }
 #if UNITY_IPHONE
-			else if (Game.Instance.ControllerInput.BtnReleased(ControllerInput.BTN_B))
+			else if (Game.Instance.MI.BtnReleased(MobileInput.BTN_B))
 #else
             else if (Input.GetButtonDown("Zoom Toggle"))
 #endif

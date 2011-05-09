@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     // this is used so no reset occurs immediately after launch
     float m_fResetableTimer;    
 
-    Vector2 m_vDefaultForceCharControl = new Vector2(350, 200);
+    public Vector2 DefaultForceCharControl = new Vector2(400, 200);
 
     // when the player's velocity becomes lower than this
     // the seesaw is moved to that location if they have enough health
@@ -78,45 +78,49 @@ public class Player : MonoBehaviour
 			if (!Game.Instance.Options.IsOptionActive(Options.eOptions.OPT_USE_ARROWS))
 			{
 				if (Game.Instance.AccelInput.HasValidXMovement())
-				{
-					// move left/right depending on accelerometer x movement
+				{					
+					// move left/right depending on accelerometer x movement,
+					// we want lower values to increase velocity more quickly
+					// than would higher values
+					float x = Mathf.Sqrt(Mathf.Abs(Game.Instance.AccelInput.XMovement * 0.75f));
+					      
+					Quaternion rot;
+					// turn to facing right    
 					if (Game.Instance.AccelInput.XMovement > 0.0f)
 					{
-			            rigidbody.AddForce(m_vDefaultForceCharControl.x, 0.0f, 0.0f);
-						// turn to facing right
-						Quaternion rot = Quaternion.LookRotation(Vector3.right);
-						transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime);
+						rot = Quaternion.LookRotation(Vector3.right);
 					}
+					// turn to facing left
 					else
 					{
-			            rigidbody.AddForce(-m_vDefaultForceCharControl.x, 0.0f, 0.0f);
-						// turn to facing left
-						Quaternion rot = Quaternion.LookRotation(-Vector3.right);
-						transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime);						
+						rot = Quaternion.LookRotation(-Vector3.right);	
+						x = -x;
 					}
+					
+					transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime);	
+		            rigidbody.AddForce(DefaultForceCharControl.x * x, 0.0f, 0.0f);
 				}
 			}
 			// use buttons	 
 			else
 			{			
-				if (Game.Instance.ControllerInput.BtnDown(ControllerInput.BTN_RIGHT))
-
+				if (Game.Instance.MI.BtnDown(MobileInput.BTN_RIGHT))
 #else
             if (Input.GetButton("Character Control Right"))
 #endif
 		        {
-		            rigidbody.AddForce(m_vDefaultForceCharControl.x, 0.0f, 0.0f);
+		            rigidbody.AddForce(DefaultForceCharControl.x, 0.0f, 0.0f);
 					// turn to facing right
 					Quaternion rot = Quaternion.LookRotation(Vector3.right);
 					transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime);
 		        }
 #if UNITY_IPHONE
-			else if (Game.Instance.ControllerInput.BtnDown(ControllerInput.BTN_LEFT))
+			else if (Game.Instance.MI.BtnDown(MobileInput.BTN_LEFT))
 #else
 	        	else if (Input.GetButton("Character Control Left"))
 #endif
 				{
-		            rigidbody.AddForce(-m_vDefaultForceCharControl.x, 0.0f, 0.0f);
+		            rigidbody.AddForce(-DefaultForceCharControl.x, 0.0f, 0.0f);
 					// turn to facing left
 					Quaternion rot = Quaternion.LookRotation(-Vector3.right);
 					transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime);
@@ -139,7 +143,9 @@ public class Player : MonoBehaviour
 //                     Game.Instance.OnCharacterDied();
 //                 }
 //             }
+#if UNITY_IPHONE
 			}
+#endif
             m_fResetableTimer -= Time.deltaTime;
             m_fAddForceTimer -= Time.deltaTime;
             m_fBoostTimer -= Time.deltaTime;
@@ -189,7 +195,7 @@ public class Player : MonoBehaviour
         if (m_fAddForceTimer > 0.0f)
             rigidbody.AddForce(AdditionalForceOnLaunch);
 #if UNITY_IPHONE
-		if (m_bBoostValid && Game.Instance.ControllerInput.BtnPressed(ControllerInput.BTN_A))
+		if (m_bBoostValid && Game.Instance.MI.BtnPressed(MobileInput.BTN_A))
 #else
         if (m_bBoostValid && Input.GetButtonDown("Action Btn 1"))
 #endif

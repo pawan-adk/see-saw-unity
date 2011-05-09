@@ -24,7 +24,7 @@ public class Game
 	Options m_Options;
 	
 #if UNITY_IPHONE
-	ControllerInput m_MobileInputController;
+	MobileInput m_MobileInputController;
 	AccelerometerInput m_AccelInput;
 	
 	public AccelerometerInput AccelInput
@@ -33,7 +33,7 @@ public class Game
 		set { m_AccelInput = value; }
 	}
 	
-	public ControllerInput ControllerInput 
+	public MobileInput MI
 	{
 		get { return m_MobileInputController; }
 		set { m_MobileInputController = value; }

@@ -35,7 +35,7 @@ public class Wedge : MonoBehaviour
         if (!Game.Instance.WeightDropped && Game.Instance.PreviewDone)
         {
 #if UNITY_IPHONE
-			if (Game.Instance.ControllerInput.BtnDown(ControllerInput.BTN_RIGHT) && m_fCurrMoveDist < MaxMoveDist)
+			if (Game.Instance.MI.BtnDown(MobileInput.BTN_RIGHT) && m_fCurrMoveDist < MaxMoveDist)
 #else
             if (Input.GetButton("Move Wedge Right") && m_fCurrMoveDist < MaxMoveDist)
 #endif
@@ -48,7 +48,7 @@ public class Wedge : MonoBehaviour
                 BoardObj.hingeJoint.anchor = new Vector3(m_fCurrMoveDist / BoardObj.GetComponent<Board>().HalfBoardLength, BoardObj.hingeJoint.anchor.y, BoardObj.hingeJoint.anchor.z);
             }
 #if UNITY_IPHONE
-			else if (Game.Instance.ControllerInput.BtnDown(ControllerInput.BTN_LEFT) && m_fCurrMoveDist > -MaxMoveDist)
+			else if (Game.Instance.MI.BtnDown(MobileInput.BTN_LEFT) && m_fCurrMoveDist > -MaxMoveDist)
 #else
             else if (Input.GetButton("Move Wedge Left") && m_fCurrMoveDist > -MaxMoveDist)
 #endif

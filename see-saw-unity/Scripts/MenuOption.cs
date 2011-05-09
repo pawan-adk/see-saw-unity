@@ -25,6 +25,16 @@ public class MenuOption : MonoBehaviour
     float m_fBoltHoverZ, m_fBoltNormalZ;
 #endif
 	
+#if UNITY_IPHONE
+	void Awake()
+	{
+		iPhoneKeyboard.autorotateToLandscapeLeft = false;
+		iPhoneKeyboard.autorotateToLandscapeRight = false;
+		iPhoneKeyboard.autorotateToPortrait = false;
+		iPhoneKeyboard.autorotateToPortraitUpsideDown = false;		
+	}
+#endif
+	
     void Start()
     {
 #if !UNITY_IPHONE
