@@ -85,14 +85,14 @@ public class Trajectory : MonoBehaviour
         float x = Rb * Mathf.Cos(theta);
 
         // 4. get the actual position
-        Vector3 collisionPt = new Vector3(wedge.collider.bounds.center.x, wedge.collider.bounds.min.y, wedge.collider.bounds.center.z) + Vector3.right * x;
+        Vector3 velDir = new Vector3(wedge.collider.bounds.center.x, wedge.collider.bounds.min.y, wedge.collider.bounds.center.z) + Vector3.right * x;
 
         // calculate distance of player from the center (hinge), this is the radius
         float Rp = Mathf.Abs(m_Player.transform.position.x - wedge.transform.position.x);
 
         // TODO: get vector perp to board at the time when the board collides with the ground,
         //       this is the direction of the player's velocity
-        Vector3 velDir = (collisionPt - ((board.collider.bounds.max + board.collider.bounds.min) * 0.5f)).normalized;
+        velDir = (velDir - ((board.collider.bounds.max + board.collider.bounds.min) * 0.5f)).normalized;
         velDir = Vector3.Cross(Vector3.forward, velDir);
 
         // GET ANGULAR VELOCITY
