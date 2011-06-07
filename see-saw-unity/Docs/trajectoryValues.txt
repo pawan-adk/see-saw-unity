@@ -6,3 +6,6 @@ p = 89999.99
 
 b/p = 604.6138
 
+WEIGHT.mass = 450
+BOARD.mass = 15
+PLAYER.mass = 30
