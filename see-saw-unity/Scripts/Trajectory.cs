@@ -102,7 +102,7 @@ public class Trajectory : MonoBehaviour
         // where r is the location of weight from axis
         // Fᵍ = mʷ*r*ɑ, Fᵍ*r = mʷ*r*r*ɑ
         // Τ = Fᵍ*r
-		float r = weight.transform.position.x - board.transform.position.x;
+		float r = weight.transform.position.x - wedge.transform.position.x;
 		float T = F * r;
 		
 		Debug.Log("T==" + T.ToString());
